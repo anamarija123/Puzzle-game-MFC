@@ -18,7 +18,7 @@ void CPuzzlePictureControl::ChangePicture(const LPCTSTR picturePath)
 	CDC* cdc = this->GetDC();
 	
 	RECT rect;
-	this->GetClientRect(&rect);
+	this->GetClientRect(&rect); 
 
 	image.StretchBlt(cdc->GetSafeHdc(), rect);
 
