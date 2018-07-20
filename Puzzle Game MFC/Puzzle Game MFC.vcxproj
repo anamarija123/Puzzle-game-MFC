@@ -179,6 +179,8 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="GameConfiguration.h" />
+    <ClInclude Include="PuzzleDetails.h" />
     <ClInclude Include="PuzzlePictureControl.h" />
     <ClInclude Include="Puzzle Game MFC.h" />
     <ClInclude Include="Puzzle Game MFCDlg.h" />
@@ -187,6 +189,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameConfiguration.cpp" />
+    <ClCompile Include="PuzzleDetails.cpp" />
     <ClCompile Include="PuzzlePictureControl.cpp" />
     <ClCompile Include="Puzzle Game MFC.cpp" />
     <ClCompile Include="Puzzle Game MFCDlg.cpp" />
