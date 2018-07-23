@@ -39,6 +39,9 @@
     <ClInclude Include="PuzzleDetails.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TimerDetails.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Puzzle Game MFC.cpp">
@@ -57,6 +60,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PuzzleDetails.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerDetails.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
