@@ -8,15 +8,14 @@ CPuzzleDetails::CPuzzleDetails(const LPTSTR previewImage, const LPTSTR gameImage
 	{
 		throw "Preview image not specified.";
 	}
-
 	wcscpy(this->m_wchPreviewImage, previewImage);
 
 	if (gameImage == NULL)
 	{
 		throw "Game image not specified.";
 	}
-
 	wcscpy(this->m_wchGameImage, gameImage);
+	
 }
 
 
