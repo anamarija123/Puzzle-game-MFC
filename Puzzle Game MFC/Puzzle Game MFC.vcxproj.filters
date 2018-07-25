@@ -42,6 +42,12 @@
     <ClInclude Include="TimerDetails.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PuzzleGrid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogPuzzleGame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Puzzle Game MFC.cpp">
@@ -63,6 +69,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TimerDetails.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PuzzleGrid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogPuzzleGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

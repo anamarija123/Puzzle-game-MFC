@@ -27,4 +27,5 @@ void CPuzzlePictureControl::ChangePicture(const LPCTSTR picturePath)
 	
 	
 	this->SetBitmap((HBITMAP) bitmap);
+	
 }

@@ -179,8 +179,10 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DialogPuzzleGame.h" />
     <ClInclude Include="GameConfiguration.h" />
     <ClInclude Include="PuzzleDetails.h" />
+    <ClInclude Include="PuzzleGrid.h" />
     <ClInclude Include="PuzzlePictureControl.h" />
     <ClInclude Include="Puzzle Game MFC.h" />
     <ClInclude Include="Puzzle Game MFCDlg.h" />
@@ -190,8 +192,10 @@
     <ClInclude Include="TimerDetails.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DialogPuzzleGame.cpp" />
     <ClCompile Include="GameConfiguration.cpp" />
     <ClCompile Include="PuzzleDetails.cpp" />
+    <ClCompile Include="PuzzleGrid.cpp" />
     <ClCompile Include="PuzzlePictureControl.cpp" />
     <ClCompile Include="Puzzle Game MFC.cpp" />
     <ClCompile Include="Puzzle Game MFCDlg.cpp" />
