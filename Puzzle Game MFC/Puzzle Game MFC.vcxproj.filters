@@ -48,6 +48,12 @@
     <ClInclude Include="DialogPuzzleGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BitmapViewer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MFCBitmapViewerCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Puzzle Game MFC.cpp">
@@ -77,6 +83,12 @@
     <ClCompile Include="DialogPuzzleGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BitmapViewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MFCBitmapViewerCtrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="PuzzleGameMFC.rc">
@@ -85,6 +97,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\Puzzle Game MFC.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="bigLandscape1.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

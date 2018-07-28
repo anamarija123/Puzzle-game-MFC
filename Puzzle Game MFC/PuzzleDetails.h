@@ -1,18 +1,19 @@
 #pragma once
-
+#include<string> 
+using namespace std;
 class CPuzzleDetails
 {
 private:
 
-	WCHAR m_wchPreviewImage[100];
-	WCHAR m_wchGameImage[100];
+	wstring m_wchPreviewImage;
+	wstring m_wchGameImage;
 
 public:
-	CPuzzleDetails(const LPTSTR previewImg, const LPTSTR gameImg);
+	CPuzzleDetails(const wstring previewImg, const wstring gameImg);
 	~CPuzzleDetails();
 	
-	const WCHAR* GetPreviewImagePath(void) { return m_wchPreviewImage; }
-	const WCHAR* GetGameImagePath(void) { return m_wchGameImage; }
+	const wstring GetPreviewImagePath(void) { return m_wchPreviewImage; }
+	const wstring GetGameImagePath(void) { return m_wchGameImage; }
 	
 };
 

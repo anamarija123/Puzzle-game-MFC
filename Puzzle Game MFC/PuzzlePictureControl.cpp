@@ -12,6 +12,7 @@ CPuzzlePictureControl::~CPuzzlePictureControl()
 
 void CPuzzlePictureControl::ChangePicture(const LPCTSTR picturePath)
 {
+	
 	CImage image;
 	image.Load(picturePath);
 

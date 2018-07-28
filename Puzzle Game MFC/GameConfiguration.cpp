@@ -3,7 +3,9 @@
 #include <list>
 #include "PuzzleDetails.h"
 #include "TimerDetails.h"
+#include <string.h>
 
+using namespace std;
 CPuzzleDetails CGameConfiguration::GetPuzzleDetails(int puzzleId)
 {
 	const TCHAR* filename = _T(".\\puzzleGame.ini");

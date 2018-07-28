@@ -1,21 +1,24 @@
 #include "stdafx.h"
 #include "PuzzleDetails.h"
+#include<string.h>
 
-
-CPuzzleDetails::CPuzzleDetails(const LPTSTR previewImage, const LPTSTR gameImage)
+CPuzzleDetails::CPuzzleDetails(const wstring previewImage, const wstring gameImage)
 {
-	if (previewImage == NULL)
+	if (previewImage.empty())
 	{
 		throw "Preview image not specified.";
 	}
-	wcscpy(this->m_wchPreviewImage, previewImage);
+	//m_wchPreviewImage +=previewImage;
+	m_wchPreviewImage.append(previewImage);
+//	strcpy(m_wchPreviewImage, previewImage);
 
-	if (gameImage == NULL)
+	if (gameImage.empty())
 	{
 		throw "Game image not specified.";
 	}
-	wcscpy(this->m_wchGameImage, gameImage);
-	
+	//m_wchGameImage += gameImage;
+//	strcpy(m_wchGameImage, gameImage);
+	m_wchGameImage.append(gameImage);
 }
 
 

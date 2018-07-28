@@ -179,8 +179,10 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BitmapViewer.h" />
     <ClInclude Include="DialogPuzzleGame.h" />
     <ClInclude Include="GameConfiguration.h" />
+    <ClInclude Include="MFCBitmapViewerCtrl.h" />
     <ClInclude Include="PuzzleDetails.h" />
     <ClInclude Include="PuzzleGrid.h" />
     <ClInclude Include="PuzzlePictureControl.h" />
@@ -192,8 +194,10 @@
     <ClInclude Include="TimerDetails.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BitmapViewer.cpp" />
     <ClCompile Include="DialogPuzzleGame.cpp" />
     <ClCompile Include="GameConfiguration.cpp" />
+    <ClCompile Include="MFCBitmapViewerCtrl.cpp" />
     <ClCompile Include="PuzzleDetails.cpp" />
     <ClCompile Include="PuzzleGrid.cpp" />
     <ClCompile Include="PuzzlePictureControl.cpp" />
@@ -214,6 +218,7 @@
     <None Include="res\PuzzleGameMFC.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="bigLandscape1.bmp" />
     <Image Include="res\Puzzle Game MFC.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
