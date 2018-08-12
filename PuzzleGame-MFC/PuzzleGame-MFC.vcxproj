@@ -183,6 +183,7 @@
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="PuzzleGame-MFC.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SetGameDialog.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -190,6 +191,7 @@
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="PuzzleGame-MFC.cpp" />
+    <ClCompile Include="SetGameDialog.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
