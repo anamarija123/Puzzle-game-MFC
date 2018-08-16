@@ -2,10 +2,13 @@
 
 #include "PuzzleDetails.h"
 #include "TimerDetails.h"
+#include <vector>
+
 class CGameConfiguration
 {
 public:
-	CPuzzleDetails GetPuzzleDetails(int puzzleId);
+	void GetPuzzleDetails(int puzzleId);
 	CTimerDetails GetTimerDetails(int timerId);
+	std::vector<CPuzzleDetails> puzzleDetailsCollection;
 };
 

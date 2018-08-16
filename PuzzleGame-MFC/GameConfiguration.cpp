@@ -6,7 +6,7 @@
 #include <string.h>
 
 using namespace std;
-CPuzzleDetails CGameConfiguration::GetPuzzleDetails(int puzzleId)
+void CGameConfiguration::GetPuzzleDetails(int puzzleId)
 {
 	const TCHAR* filename = _T(".\\puzzleGame.ini");
 	WCHAR sectionName[100];
@@ -18,7 +18,9 @@ CPuzzleDetails CGameConfiguration::GetPuzzleDetails(int puzzleId)
 	GetPrivateProfileString(sectionName, _T("GameImage"), NULL, gameImage, sizeof(gameImage), filename);
 
 	CPuzzleDetails puzzleDetails(previewImage, gameImage);
-	return puzzleDetails;
+	puzzleDetailsCollection.push_back(puzzleDetails);
+
+	//return puzzleDetailsCollection;
 }
 
 CTimerDetails CGameConfiguration::GetTimerDetails(int timerId)

@@ -36,9 +36,6 @@
     <ClInclude Include="SetGameDialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PuzzlePictureControl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameConfiguration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -63,9 +60,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SetGameDialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PuzzlePictureControl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameConfiguration.cpp">

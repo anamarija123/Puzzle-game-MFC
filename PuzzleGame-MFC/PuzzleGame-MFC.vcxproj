@@ -182,7 +182,6 @@
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="GameConfiguration.h" />
     <ClInclude Include="PuzzleDetails.h" />
-    <ClInclude Include="PuzzlePictureControl.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="PuzzleGame-MFC.h" />
     <ClInclude Include="Resource.h" />
@@ -195,7 +194,6 @@
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="GameConfiguration.cpp" />
     <ClCompile Include="PuzzleDetails.cpp" />
-    <ClCompile Include="PuzzlePictureControl.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="PuzzleGame-MFC.cpp" />
     <ClCompile Include="SetGameDialog.cpp" />
