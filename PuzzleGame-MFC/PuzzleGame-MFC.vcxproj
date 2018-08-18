@@ -181,7 +181,9 @@
   <ItemGroup>
     <ClInclude Include="ChildView.h" />
     <ClInclude Include="CPictureSetUp.h" />
+    <ClInclude Include="GameAbout.h" />
     <ClInclude Include="GameConfiguration.h" />
+    <ClInclude Include="GridDetails.h" />
     <ClInclude Include="PuzzleDetails.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="PuzzleGame-MFC.h" />
@@ -194,7 +196,9 @@
   <ItemGroup>
     <ClCompile Include="ChildView.cpp" />
     <ClCompile Include="CPictureSetUp.cpp" />
+    <ClCompile Include="GameAbout.cpp" />
     <ClCompile Include="GameConfiguration.cpp" />
+    <ClCompile Include="GridDetails.cpp" />
     <ClCompile Include="PuzzleDetails.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="PuzzleGame-MFC.cpp" />

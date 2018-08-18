@@ -39,3 +39,15 @@ CTimerDetails CGameConfiguration::GetTimerDetails(int timerId)
 	CTimerDetails timerDetails(minutesForEasyGrid, minutesForMediumGrid, minutesForHardGrid);
 	return timerDetails;
 }
+
+void CGameConfiguration::GetGridDetails()
+{
+	const TCHAR* filename = _T(".\\puzzleGame.ini");
+	WCHAR sectionName[100];
+	xGrid = GetPrivateProfileInt(_T("GameStart"), _T("StartGridLength"),7, filename);
+	yGrid = GetPrivateProfileInt(_T("GameStart"), _T("StartGridLength"), 7, filename);
+
+	CGridDetails gridDetails(xGrid, yGrid);
+	
+	
+}

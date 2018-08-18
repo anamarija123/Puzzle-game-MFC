@@ -14,8 +14,8 @@ PictureSetUp::~PictureSetUp()
 void PictureSetUp::init(int height, int width, string picturePath )
 {
 
-	height = height;
-	width = width;
+	heightNumber = height;
+	widthNumber = width;
 	for (int i = 0; i < pictureHeight; i += pictureHeight / height)
 	{
 		yCoords.push_back(i);
@@ -48,17 +48,32 @@ void PictureSetUp::DrawGrid(CPaintDC* dc, CRect rect)
 	}
 }
 
-void PictureSetUp::DrawPicture(CPaintDC* dc, CRect rect)
+bool PictureSetUp::DrawPicture(HDC HwINdC, CRect rect)
 {
+	int X;
+	int Y;
 	for (int i = 0; i < widthNumber; i++)
 	{
 		for (int j = 0; j < heightNumber; j++)
 		{
-			indexX.at(rand()%indexX.size())%widthNumber;
-			indexY.at(rand() % indexY.size())%heightNumber;
+			X=indexX.at(rand()%indexX.size())%widthNumber;
+			Y=indexY.at(rand() % indexY.size())%heightNumber;
+			BOOL qRetBlit = ::BitBlt(
+				HwINdC,
+				0,
+				0,
+				pictureWidth/ widthNumber,
+				pictureHeight/heightNumber
+				, hLocalDC,X*pictureWidth/widthNumber, Y*pictureHeight/heightNumber, SRCCOPY);
+			if (!qRetBlit)
+			{
+				::MessageBox(NULL, _T("BItBlt failed"), _T("Error"), MB_OK);
+				return false;
+			}
 		}
 
 	}
+	return true;
 }
 bool PictureSetUp::LoadBitmapPicture(LPCWSTR szFileName)
 {
@@ -69,6 +84,8 @@ bool PictureSetUp::LoadBitmapPicture(LPCWSTR szFileName)
 		::MessageBox(NULL, _T("FAILED"), _T("ERROR"), MB_OK);
 	}
 	GetClientRect((HWND)hBitmap, &rect);
+	pictureHeight = rect.bottom;
+	pictureWidth = rect.right;
 
 	return true;
 }
@@ -76,7 +93,7 @@ bool PictureSetUp::LoadBitmapPicture(LPCWSTR szFileName)
 
 bool PictureSetUp::ShowPicture (HDC HwINdC)
 {
-	HDC hLocalDC;
+	
 	hLocalDC = ::CreateCompatibleDC(HwINdC);
 	if (hLocalDC == NULL)
 	{

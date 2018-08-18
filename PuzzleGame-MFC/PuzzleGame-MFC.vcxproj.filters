@@ -48,6 +48,12 @@
     <ClInclude Include="CPictureSetUp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GridDetails.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameAbout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PuzzleGame-MFC.cpp">
@@ -75,6 +81,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CPictureSetUp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GridDetails.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameAbout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
