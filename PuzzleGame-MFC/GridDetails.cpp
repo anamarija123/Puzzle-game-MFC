@@ -1,10 +1,7 @@
 #include "stdafx.h"
 #include "GridDetails.h"
 
-CGridDetails::CGridDetails()
-{
 
-}
 CGridDetails::CGridDetails(const int xSize, const int ySize)
 {
 	if (xSize == 0)

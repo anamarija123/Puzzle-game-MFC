@@ -6,7 +6,6 @@ private:
 	int m_YSize;
 public:
 	CGridDetails(const int xSize, const int ySize);
-	CGridDetails();
 	~CGridDetails();
 
 	const int GetXSize(void) { return m_XSize; }

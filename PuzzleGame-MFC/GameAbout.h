@@ -2,6 +2,7 @@
 
 #include "GridDetails.h"
 #include "SetGameDialog.h"
+#include "GameConfiguration.h"
 
 class CGameAbout
 {
@@ -11,8 +12,10 @@ private:
 public:
 	CGameAbout();
 	~CGameAbout();
+	CGameConfiguration m_gameConfiguration;
 	void SetParametarsInit();
 	void start();
 	CSetGameDialog setDialogParameters;
+	CGameConfiguration config;
 };
 

@@ -43,11 +43,17 @@ CTimerDetails CGameConfiguration::GetTimerDetails(int timerId)
 void CGameConfiguration::GetGridDetails()
 {
 	const TCHAR* filename = _T(".\\puzzleGame.ini");
-	WCHAR sectionName[100];
-	xGrid = GetPrivateProfileInt(_T("GameStart"), _T("StartGridLength"),7, filename);
-	yGrid = GetPrivateProfileInt(_T("GameStart"), _T("StartGridLength"), 7, filename);
+	xGrid = GetPrivateProfileInt(_T("GameStart"), _T("Width"),7, filename);
+	yGrid = GetPrivateProfileInt(_T("GameStart"), _T("Height"), 7, filename);
 
 	CGridDetails gridDetails(xGrid, yGrid);
+	gridDetailsCollection.push_back(gridDetails);
 	
-	
+}
+void CGameConfiguration::SetGridDetails(int x, int y)
+{
+	const TCHAR* filename = _T(".\\puzzleGame.ini");
+	WritePrivateProfileString(_T("GameStart"), _T("Width"), std::to_wstring(x).c_str(), filename);
+	WritePrivateProfileString(_T("GameStart"), _T("Height"), std::to_wstring(y).c_str(), filename);
+
 }

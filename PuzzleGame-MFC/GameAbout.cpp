@@ -3,6 +3,8 @@
 
 void CGameAbout::start()
 {
+	
+	m_gameConfiguration.GetGridDetails();
 	SetParametarsInit();
 }
 CGameAbout::CGameAbout()
@@ -15,15 +17,16 @@ CGameAbout::~CGameAbout()
 }
 void CGameAbout::SetParametarsInit()
 {
-	CGridDetails details;
-	x = details.GetXSize();
-	y = details.GetYSize();
+	
+	x = m_gameConfiguration.gridDetailsCollection[0].GetXSize();
+	y = m_gameConfiguration.gridDetailsCollection[0].GetYSize();
 	setDialogParameters.Y = y;
 	setDialogParameters.X = x;
-
+	
 	setDialogParameters.DoModal();
-
+	
+	
 	x = setDialogParameters.X;
 	y = setDialogParameters.Y;
-
+	config.SetGridDetails(x, y);
 }
