@@ -3,7 +3,7 @@
 #include "GridDetails.h"
 #include "SetGameDialog.h"
 #include "GameConfiguration.h"
-
+#include "PictureSetUp.h"
 class CGameAbout
 {
 private:
@@ -17,5 +17,6 @@ public:
 	void start();
 	CSetGameDialog setDialogParameters;
 	CGameConfiguration config;
+	CPictureSetUp setup;
 };
 

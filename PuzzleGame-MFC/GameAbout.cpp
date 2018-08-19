@@ -29,4 +29,12 @@ void CGameAbout::SetParametarsInit()
 	x = setDialogParameters.X;
 	y = setDialogParameters.Y;
 	config.SetGridDetails(x, y);
+	wstring imagePath = setDialogParameters.GetPictureForGame();
+	bool pictureOpened = setup.LoadBitmapPicture(imagePath.c_str());
+	if (pictureOpened == true)
+	{
+		setup.init(x, y, imagePath);
+	}
+	
+	
 }

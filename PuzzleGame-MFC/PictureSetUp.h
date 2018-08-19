@@ -3,12 +3,12 @@
 #include <vector>
 
 using namespace std;
-class PictureSetUp
+class CPictureSetUp
 {
 public:
-	PictureSetUp();
-	~PictureSetUp();
-	void init(int height, int width, string picturePath);
+	CPictureSetUp();
+	~CPictureSetUp();
+	void init(int height, int width, wstring picturePath);
 	bool DrawPicture(HDC HwINdC, CRect rect);
 	void DrawGrid(CPaintDC* dc, CRect rect);
 	bool LoadBitmapPicture(LPCWSTR szFileName);

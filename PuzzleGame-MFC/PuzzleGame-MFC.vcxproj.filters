@@ -45,13 +45,13 @@
     <ClInclude Include="PuzzleDetails.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CPictureSetUp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GridDetails.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameAbout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PictureSetUp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -80,13 +80,13 @@
     <ClCompile Include="PuzzleDetails.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CPictureSetUp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GridDetails.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameAbout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PictureSetUp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

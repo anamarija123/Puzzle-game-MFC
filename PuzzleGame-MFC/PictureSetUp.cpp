@@ -1,17 +1,17 @@
 #include "stdafx.h"
-#include "CPictureSetUp.h"
+#include "PictureSetUp.h"
 
 
-PictureSetUp::PictureSetUp()
+CPictureSetUp::CPictureSetUp()
 {
 }
 
 
-PictureSetUp::~PictureSetUp()
+CPictureSetUp::~CPictureSetUp()
 {
 }
 
-void PictureSetUp::init(int height, int width, string picturePath )
+void CPictureSetUp::init(int height, int width, wstring picturePath )
 {
 
 	heightNumber = height;
@@ -33,7 +33,7 @@ void PictureSetUp::init(int height, int width, string picturePath )
 	}
 }
 
-void PictureSetUp::DrawGrid(CPaintDC* dc, CRect rect)
+void CPictureSetUp::DrawGrid(CPaintDC* dc, CRect rect)
 {
 	for (int i = 0; i < rect.right; i += rect.right%widthNumber)
 	{
@@ -48,7 +48,7 @@ void PictureSetUp::DrawGrid(CPaintDC* dc, CRect rect)
 	}
 }
 
-bool PictureSetUp::DrawPicture(HDC HwINdC, CRect rect)
+bool CPictureSetUp::DrawPicture(HDC HwINdC, CRect rect)
 {
 	int X;
 	int Y;
@@ -75,7 +75,7 @@ bool PictureSetUp::DrawPicture(HDC HwINdC, CRect rect)
 	}
 	return true;
 }
-bool PictureSetUp::LoadBitmapPicture(LPCWSTR szFileName)
+bool CPictureSetUp::LoadBitmapPicture(LPCWSTR szFileName)
 {
 	hBitmap = (HBITMAP)LoadImage(NULL, szFileName, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 	
@@ -84,22 +84,7 @@ bool PictureSetUp::LoadBitmapPicture(LPCWSTR szFileName)
 		::MessageBox(NULL, _T("FAILED"), _T("ERROR"), MB_OK);
 	}
 	GetClientRect((HWND)hBitmap, &rect);
-	pictureHeight = rect.bottom;
-	pictureWidth = rect.right;
 
-	return true;
-}
-
-
-bool PictureSetUp::ShowPicture (HDC HwINdC)
-{
-	
-	hLocalDC = ::CreateCompatibleDC(HwINdC);
-	if (hLocalDC == NULL)
-	{
-		::MessageBox(NULL, _T("CreateCompatibileDc failed"), _T("Error"), MB_OK);
-		return false;
-	}
 
 	BITMAP qBitmap;
 	int lReturn = GetObject(reinterpret_cast<HGDIOBJ>(hBitmap), sizeof(BITMAP), reinterpret_cast<LPVOID>(&qBitmap));
@@ -108,13 +93,31 @@ bool PictureSetUp::ShowPicture (HDC HwINdC)
 		::MessageBox(NULL, _T("GetObj failed"), _T("Error"), MB_OK);
 		return false;
 	}
+	pictureHeight = qBitmap.bmHeight;
+	pictureWidth = qBitmap.bmWidth;
 
+
+	return true;
+}
+
+
+bool CPictureSetUp::ShowPicture (HDC HwINdC)
+{
 	HBITMAP hOldBmp = (HBITMAP)::SelectObject(hLocalDC, hBitmap);
 	if (hOldBmp == NULL)
 	{
 		::MessageBox(NULL, _T("SelectObj failed"), _T("Error"), MB_OK);
 		return false;
 	}
+
+	hLocalDC = ::CreateCompatibleDC(HwINdC);
+	if (hLocalDC == NULL)
+	{
+		::MessageBox(NULL, _T("CreateCompatibileDc failed"), _T("Error"), MB_OK);
+		return false;
+	}
+
+
 
 	BOOL qRetBlit = ::BitBlt(HwINdC, 0, 0, rect.right, rect.bottom, hLocalDC, 0, 0, SRCCOPY);
 	if (!qRetBlit)
