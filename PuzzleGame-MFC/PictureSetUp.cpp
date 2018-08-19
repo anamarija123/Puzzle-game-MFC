@@ -16,7 +16,7 @@ void CPictureSetUp::init(int height, int width, wstring picturePath )
 
 	heightNumber = height;
 	widthNumber = width;
-	for (int i = 0; i < pictureHeight; i += pictureHeight / height)
+	for (int i = pictureHeight / height; i < pictureHeight; i += pictureHeight / height)
 	{
 		yCoords.push_back(i);
 	}
