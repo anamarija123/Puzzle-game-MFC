@@ -14,6 +14,7 @@ public:
 	~CGameAbout();
 	CGameConfiguration m_gameConfiguration;
 	void SetParametarsInit();
+	void SetGridAndPicture(CPaintDC* dc, RECT rect, HWND hwnd);
 	void start();
 	CSetGameDialog setDialogParameters;
 	CGameConfiguration config;

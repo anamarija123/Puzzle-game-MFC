@@ -35,6 +35,11 @@ void CGameAbout::SetParametarsInit()
 	{
 		setup.init(x, y, imagePath);
 	}
-	
-	
+
+
+}
+
+void CGameAbout::SetGridAndPicture(CPaintDC* dc, RECT rect, HWND hwnd)
+{
+	setup.DrawGrid(dc, rect, hwnd);	
 }

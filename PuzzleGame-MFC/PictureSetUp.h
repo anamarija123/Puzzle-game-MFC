@@ -10,7 +10,7 @@ public:
 	~CPictureSetUp();
 	void init(int height, int width, wstring picturePath);
 	bool DrawPicture(HDC HwINdC, CRect rect);
-	void DrawGrid(CPaintDC* dc, CRect rect);
+	void DrawGrid(CPaintDC* dc, RECT rect, HWND hwnd);
 	bool LoadBitmapPicture(LPCWSTR szFileName);
 	bool ShowPicture(HDC HwINdC);
 private:
