@@ -4,7 +4,7 @@
 void CGameAbout::start()
 {
 	
-	m_gameConfiguration.GetGridDetails();
+	
 	SetParametarsInit();
 }
 CGameAbout::CGameAbout()
@@ -17,7 +17,11 @@ CGameAbout::~CGameAbout()
 }
 void CGameAbout::SetParametarsInit()
 {
-	
+	m_gameConfiguration.GetGridDetails();
+	m_gameConfiguration.GetPuzzleDetails(1);
+	m_gameConfiguration.GetPuzzleDetails(2);
+	m_gameConfiguration.GetPuzzleDetails(3);
+	setDialogParameters.setPuzzleDetails(m_gameConfiguration);
 	x = m_gameConfiguration.gridDetailsCollection[0].GetXSize();
 	y = m_gameConfiguration.gridDetailsCollection[0].GetYSize();
 	setDialogParameters.Y = y;
@@ -28,7 +32,7 @@ void CGameAbout::SetParametarsInit()
 	
 	x = setDialogParameters.X;
 	y = setDialogParameters.Y;
-	config.SetGridDetails(x, y);
+	m_gameConfiguration.SetGridDetails(x, y);
 	wstring imagePath = setDialogParameters.GetPictureForGame();
 	bool pictureOpened = setup.LoadBitmapPicture(imagePath.c_str());
 	if (pictureOpened == true)

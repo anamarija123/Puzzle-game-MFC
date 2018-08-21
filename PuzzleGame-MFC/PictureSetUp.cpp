@@ -13,16 +13,18 @@ CPictureSetUp::~CPictureSetUp()
 
 void CPictureSetUp::init(int height, int width, wstring picturePath )
 {
+	
 	heightNumber = height;
 	widthNumber = width;
-	for (int i = pictureHeight / height; i < pictureHeight; i += pictureHeight / height)
+	
+	for (int i = pictureHeight / height; i <= pictureHeight; i += pictureHeight / height)
 	{
-		yCoords.push_back(i);
-	}
-
-	for (int i = 0; i < pictureWidth; i += pictureWidth / width)
-	{
-		xCoords.push_back(i);
+		point.x=i;
+		for (int j = pictureWidth / width; j <= pictureWidth; j += pictureWidth / width)
+		{
+			point.y = j;
+			Coords.push_back(point);
+		}
 	}
 
 	for (int i = 0; i < height*width; i ++)
@@ -31,6 +33,8 @@ void CPictureSetUp::init(int height, int width, wstring picturePath )
 		indexX.push_back(i);
 	}
 }
+
+
 
 void CPictureSetUp::DrawGrid(CPaintDC* dc, RECT rect, HWND hwnd)
 {
@@ -90,7 +94,6 @@ bool CPictureSetUp::LoadBitmapPicture(LPCWSTR szFileName)
 	}
 	pictureHeight = qBitmap.bmHeight;
 	pictureWidth = qBitmap.bmWidth;
-
 
 	return true;
 }

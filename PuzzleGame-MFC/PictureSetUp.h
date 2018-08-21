@@ -14,8 +14,8 @@ public:
 	bool LoadBitmapPicture(LPCWSTR szFileName);
 	bool ShowPicture(HDC HwINdC);
 private:
-	std::vector<int>xCoords;
-	std::vector<int>yCoords;
+	POINT point;
+	std::vector<POINT>Coords;
 	std::vector<int>indexX;
 	std::vector<int>indexY;
 	int heightNumber;

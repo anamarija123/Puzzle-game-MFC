@@ -12,12 +12,11 @@ private:
 public:
 	CGameAbout();
 	~CGameAbout();
-	CGameConfiguration m_gameConfiguration;
 	void SetParametarsInit();
 	void SetGridAndPicture(CPaintDC* dc, RECT rect, HWND hwnd);
 	void start();
+	CGameConfiguration m_gameConfiguration;
 	CSetGameDialog setDialogParameters;
-	CGameConfiguration config;
 	CPictureSetUp setup;
 };
 
