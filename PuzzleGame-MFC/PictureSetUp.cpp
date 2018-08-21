@@ -35,10 +35,12 @@ void CPictureSetUp::init(int height, int width, wstring picturePath )
 void CPictureSetUp::DrawGrid(CPaintDC* dc, RECT rect, HWND hwnd)
 {
 	GetClientRect(hwnd, &rect);
-	dc->LineTo(rect.right, rect.bottom);
 
-	for(int i=0;i<rect.right;i=i+rect.right/widthNumber)
-		dc->MoveTo(i,0), dc->LineTo(i, rect.bottom);
+	for (int i = 0; i<rect.right; i = i + rect.right / widthNumber)
+		dc->MoveTo(i, 0), dc->LineTo(i, rect.bottom);
+
+	for (int i = 0; i<rect.bottom; i = i + rect.bottom / heightNumber)
+		dc->MoveTo(0, i), dc->LineTo(rect.right, i);
 }
 
 bool CPictureSetUp::DrawPicture(HDC HwINdC, CRect rect)
