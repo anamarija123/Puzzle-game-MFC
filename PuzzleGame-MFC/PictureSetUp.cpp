@@ -13,7 +13,6 @@ CPictureSetUp::~CPictureSetUp()
 
 void CPictureSetUp::init(int height, int width, wstring picturePath )
 {
-	//e a kaj misliš da napravimo grid bez obzira na velièinu jednostavno ga hardkodiramo
 	heightNumber = height;
 	widthNumber = width;
 	for (int i = pictureHeight / height; i < pictureHeight; i += pictureHeight / height)
@@ -40,9 +39,6 @@ void CPictureSetUp::DrawGrid(CPaintDC* dc, RECT rect, HWND hwnd)
 
 	for(int i=0;i<rect.right;i=i+rect.right/widthNumber)
 		dc->MoveTo(i,0), dc->LineTo(i, rect.bottom);
-	//mozes sama iduci? da da naravno, ali još moram dodati i ono tvoje ovo mi je prevelik grid
-
-	//pokusaj sad
 }
 
 bool CPictureSetUp::DrawPicture(HDC HwINdC, CRect rect)
