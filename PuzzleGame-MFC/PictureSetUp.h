@@ -9,13 +9,15 @@ public:
 	CPictureSetUp();
 	~CPictureSetUp();
 	void init(int height, int width, wstring picturePath);
-	bool DrawPicture(HDC HwINdC, CRect rect);
+	bool DrawPicture();
 	void DrawGrid(CPaintDC* dc, RECT rect, HWND hwnd);
 	bool LoadBitmapPicture(LPCWSTR szFileName);
 	bool ShowPicture(HDC HwINdC);
 private:
 	POINT point;
+	POINT second_point;
 	std::vector<POINT>Coords;
+	std::vector<POINT>ShuffledCoords;
 	std::vector<int>indexX;
 	std::vector<int>indexY;
 	int heightNumber;

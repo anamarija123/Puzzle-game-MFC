@@ -33,8 +33,6 @@ void CPictureSetUp::init(int height, int width, wstring picturePath )
 	}
 }
 
-
-
 void CPictureSetUp::DrawGrid(CPaintDC* dc, RECT rect, HWND hwnd)
 {
 	GetClientRect(hwnd, &rect);
@@ -46,33 +44,18 @@ void CPictureSetUp::DrawGrid(CPaintDC* dc, RECT rect, HWND hwnd)
 		dc->MoveTo(0, i), dc->LineTo(rect.right, i);
 }
 
-bool CPictureSetUp::DrawPicture(HDC HwINdC, CRect rect)
+bool CPictureSetUp::DrawPicture() //HDC HwINdC, CRect rect
 {
-	int X;
-	int Y;
-	for (int i = 0; i < widthNumber; i++)
+	while (!Coords.empty())
 	{
-		for (int j = 0; j < heightNumber; j++)
-		{
-			X=indexX.at(rand()%indexX.size())%widthNumber;
-			Y=indexY.at(rand() % indexY.size())%heightNumber;
-			BOOL qRetBlit = ::BitBlt(
-				HwINdC,
-				0,
-				0,
-				pictureWidth/ widthNumber,
-				pictureHeight/heightNumber
-				, hLocalDC,X*pictureWidth/widthNumber, Y*pictureHeight/heightNumber, SRCCOPY);
-			if (!qRetBlit)
-			{
-				::MessageBox(NULL, _T("BItBlt failed"), _T("Error"), MB_OK);
-				return false;
-			}
-		}
-
+		int index = (rand() % Coords.size()) % widthNumber; //
+		second_point = Coords.at(index);
+		ShuffledCoords.push_back(second_point);
+		Coords.erase(Coords.begin() + index);
 	}
 	return true;
 }
+
 bool CPictureSetUp::LoadBitmapPicture(LPCWSTR szFileName)
 {
 	hBitmap = (HBITMAP)LoadImage(NULL, szFileName, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
@@ -93,7 +76,7 @@ bool CPictureSetUp::LoadBitmapPicture(LPCWSTR szFileName)
 	}
 	pictureHeight = qBitmap.bmHeight;
 	pictureWidth = qBitmap.bmWidth;
-
+	
 	return true;
 }
 
