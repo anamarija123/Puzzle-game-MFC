@@ -13,7 +13,6 @@ CPictureSetUp::~CPictureSetUp()
 
 void CPictureSetUp::init(int height, int width, wstring picturePath )
 {
-	
 	heightNumber = height;
 	widthNumber = width;
 	
