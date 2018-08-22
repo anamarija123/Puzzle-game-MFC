@@ -9,9 +9,11 @@ public:
 	CPictureSetUp();
 	~CPictureSetUp();
 	void init(int height, int width, wstring picturePath);
-	bool DrawPicture();
-	void DrawGrid(CPaintDC* dc, RECT rect, HWND hwnd);
-	bool LoadBitmapPicture(LPCWSTR szFileName);
+	bool Shuffle();
+	void DrawPieces(HWND hwnd, HDC HwINdC);
+	void DrawGrid(CPaintDC* dc, RECT rect, HWND hwnd, HDC HwINdC);
+	//bool LoadBitmapPicture(LPCWSTR szFileName);
+	bool LoadBitmapPicture(HDC HwINdC, LPCWSTR szFileName);
 	bool ShowPicture(HDC HwINdC);
 private:
 	POINT point;
@@ -26,6 +28,9 @@ private:
 	int pictureWidth;
 	RECT rect;
 	HBITMAP hBitmap;
+	BITMAP qBitmap;
 	HDC hLocalDC;
+	int lReturn;
+	HBITMAP hOldBmp;
 };
 

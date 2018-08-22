@@ -13,10 +13,11 @@ public:
 	CGameAbout();
 	~CGameAbout();
 	void SetParametarsInit();
-	void SetGridAndPicture(CPaintDC* dc, RECT rect, HWND hwnd);
+	void SetGridAndPicture(HDC hDC, CPaintDC* dc, RECT rect, HWND hwnd);
 	void start();
 	CGameConfiguration m_gameConfiguration;
 	CSetGameDialog setDialogParameters;
 	CPictureSetUp setup;
+	wstring imagePath;
 };
 

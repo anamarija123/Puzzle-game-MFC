@@ -33,18 +33,18 @@ void CGameAbout::SetParametarsInit()
 	x = setDialogParameters.X;
 	y = setDialogParameters.Y;
 	m_gameConfiguration.SetGridDetails(x, y);
-	wstring imagePath = setDialogParameters.GetPictureForGame();
-	bool pictureOpened = setup.LoadBitmapPicture(imagePath.c_str());
+	imagePath = setDialogParameters.GetPictureForGame();
+	
+}
+
+void CGameAbout::SetGridAndPicture(HDC hDC,CPaintDC* dc, RECT rect, HWND hwnd)
+{
+	bool pictureOpened = setup.LoadBitmapPicture(hDC,imagePath.c_str());
 	if (pictureOpened == true)
 	{
 		setup.init(x, y, imagePath);
 	}
-
-
-}
-
-void CGameAbout::SetGridAndPicture(CPaintDC* dc, RECT rect, HWND hwnd)
-{
-	setup.DrawGrid(dc, rect, hwnd);	
-	setup.DrawPicture();
+	setup.Shuffle();
+	setup.DrawGrid(dc, rect, hwnd, hDC);
+//	setup.DrawPieces(hwnd,hDC);
 }
