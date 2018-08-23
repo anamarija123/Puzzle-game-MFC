@@ -53,12 +53,12 @@ void CPictureSetUp::DrawGrid(CPaintDC* dc, RECT rect, HWND hwnd, HDC HwINdC)
 	{
 		BOOL qRetBlit = ::BitBlt(
 			HwINdC,
-			0,
-			0,
+			308,
+			164,
 			rect.right / widthNumber,
 			rect.bottom / heightNumber,
 			hLocalDC, ShuffledCoords.at(k).x, ShuffledCoords.at(k).y, SRCCOPY);
-		k++;
+		++k;
 	}
 
 	
