@@ -35,31 +35,52 @@ void CPictureSetUp::init(int height, int width, wstring picturePath )
 
 void CPictureSetUp::DrawGrid(CPaintDC* dc, RECT rect, HWND hwnd, HDC HwINdC)
 {
+
 	GetClientRect(hwnd, &rect);
 	int i;
 	int k = 0;
-	for (i = 0; i<rect.right; i = i + rect.right / widthNumber)
+	for (i = 0; i < rect.right; i = i + rect.right / widthNumber)
 		
 	{
 		dc->MoveTo(i, 0), dc->LineTo(i, rect.bottom);		
 	}
 	
-	for (int i = 0; i<rect.bottom; i = i + rect.bottom / heightNumber)
+	for (int i = 0; i < rect.bottom; i = i + rect.bottom / heightNumber)
 		dc->MoveTo(0, i), dc->LineTo(rect.right, i);
 
+	int count = ShuffledCoords.size();
 
-	for (i = 0; i < heightNumber*widthNumber; i = i ++)
+	BOOL qRetBlit = ::BitBlt(HwINdC, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight, hLocalDC, 0, 0, SRCCOPY);
 
+	int coefficient_x = rect.right / widthNumber; 
+	int coefficient_y = rect.bottom / heightNumber;
+
+	
+	for (int y = 0; y < rect.bottom; y = y + coefficient_y)
 	{
-		BOOL qRetBlit = ::BitBlt(
-			HwINdC,
-			308,
-			164,
-			rect.right / widthNumber,
-			rect.bottom / heightNumber,
-			hLocalDC, ShuffledCoords.at(k).x, ShuffledCoords.at(k).y, SRCCOPY);
-		++k;
+		for (int x = 0; x < rect.right; x = x + coefficient_x)
+		{
+			 BOOL qRetBlit = ::BitBlt(
+				HwINdC,
+				x,
+				y,
+				 qBitmap.bmWidth, qBitmap.bmHeight,
+				hLocalDC, ShuffledCoords.at(k).x, ShuffledCoords.at(k).y, SRCCOPY);
+			if (k != count-1)
+			{
+				++k;
+			}
+			else
+			{
+				break;
+			}
+		}
 	}
+	
+		
+	::SelectObject(hLocalDC, hOldBmp);
+	::DeleteDC(hLocalDC);
+	::DeleteObject(hBitmap);
 
 	
 }
