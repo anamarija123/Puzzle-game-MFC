@@ -45,6 +45,7 @@ void CGameAbout::SetGridAndPicture(HDC hDC,CPaintDC* dc, RECT rect, HWND hwnd)
 		setup.init(x, y, imagePath);
 	}
 	setup.Shuffle();
+//	setup.ShowPicture(hDC);
 	setup.DrawGrid(dc, rect, hwnd, hDC);
 //	setup.DrawPieces(hwnd,hDC);
 }
