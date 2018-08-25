@@ -17,6 +17,7 @@ public:
 	bool ShowPicture(HDC HwINdC);
 private:
 	POINT point;
+	POINT a;
 	POINT second_point;
 	std::vector<POINT>Coords;
 	std::vector<POINT>ShuffledCoords;
