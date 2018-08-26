@@ -179,9 +179,10 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ChildView.h" />
-    <ClInclude Include="PictureSetUp.h" />
-    <ClInclude Include="GameAbout.h" />
+    <ClInclude Include="PuzzleGameView.h" />
+    <ClInclude Include="GameDocument.h" />
+    <ClInclude Include="GameSetUp.h" />
+    <ClInclude Include="GameIntro.h" />
     <ClInclude Include="GameConfiguration.h" />
     <ClInclude Include="GridDetails.h" />
     <ClInclude Include="PuzzleDetails.h" />
@@ -194,9 +195,10 @@
     <ClInclude Include="TimerDetails.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ChildView.cpp" />
-    <ClCompile Include="PictureSetUp.cpp" />
-    <ClCompile Include="GameAbout.cpp" />
+    <ClCompile Include="PuzzleGameView.cpp" />
+    <ClCompile Include="GameDocument.cpp" />
+    <ClCompile Include="GameSetup.cpp" />
+    <ClCompile Include="GameIntro.cpp" />
     <ClCompile Include="GameConfiguration.cpp" />
     <ClCompile Include="GridDetails.cpp" />
     <ClCompile Include="PuzzleDetails.cpp" />

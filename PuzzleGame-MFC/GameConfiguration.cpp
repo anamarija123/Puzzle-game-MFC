@@ -18,11 +18,11 @@ void CGameConfiguration::GetPuzzleDetails(int puzzleId)
 	GetPrivateProfileString(sectionName, _T("GameImage"), NULL, gameImage, sizeof(gameImage), filename);
 
 	CPuzzleDetails puzzleDetails(previewImage, gameImage);
+
 	puzzleDetailsCollection.push_back(puzzleDetails);
 
-	//return puzzleDetailsCollection;
 }
-
+/*
 CTimerDetails CGameConfiguration::GetTimerDetails(int timerId)
 {
 	const TCHAR* filename = _T(".\\puzzleGame.ini");
@@ -39,7 +39,7 @@ CTimerDetails CGameConfiguration::GetTimerDetails(int timerId)
 	CTimerDetails timerDetails(minutesForEasyGrid, minutesForMediumGrid, minutesForHardGrid);
 	return timerDetails;
 }
-
+*/
 void CGameConfiguration::GetGridDetails()
 {
 	const TCHAR* filename = _T(".\\puzzleGame.ini");
@@ -55,5 +55,4 @@ void CGameConfiguration::SetGridDetails(int x, int y)
 	const TCHAR* filename = _T(".\\puzzleGame.ini");
 	WritePrivateProfileString(_T("GameStart"), _T("Width"), std::to_wstring(x).c_str(), filename);
 	WritePrivateProfileString(_T("GameStart"), _T("Height"), std::to_wstring(y).c_str(), filename);
-
 }
