@@ -16,7 +16,7 @@ public:
 	~CGameIntro();
 	void SetParametarsLoadedFromDialog();
 	void SetParametarsLoadedFromIniFile();
-	void SetGridAndPictureForGame(HDC hDC, CPaintDC* dc, RECT rect, HWND hwnd);
+	void SetGridAndPictureForGame(HDC hDC, CPaintDC* dc, RECT rect, HWND hwnd, int indicator);
 	void start();
 	CGameConfiguration m_gameConfiguration;
 	CSetGameDialog m_dialogParameters;

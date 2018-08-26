@@ -1,7 +1,8 @@
 #pragma once
 #include<string.h>
 #include <vector>
-
+#include <iterator>
+#include "PointOperators.h"
 
 using namespace std;
 class CGameSetUp
@@ -30,6 +31,8 @@ private:
 	std::vector<POINT>Coords;
 	std::vector<POINT>ShuffledCoords;
 	std::vector <POINT> swapCoordsToShow;
+	std::vector<POINT>::iterator it;
+
 
 	int heightNumber;
 	int widthNumber;
