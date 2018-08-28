@@ -18,7 +18,7 @@ CGameIntro::~CGameIntro()
 
 void CGameIntro::SetParametarsLoadedFromIniFile()
 {
-	m_gameConfiguration.GetGridDetails();
+	//m_gameConfiguration.GetGridDetails();
 	m_gameConfiguration.GetPuzzleDetails(1);
 	m_gameConfiguration.GetPuzzleDetails(2);
 	m_gameConfiguration.GetPuzzleDetails(3);
@@ -27,6 +27,7 @@ void CGameIntro::SetParametarsLoadedFromIniFile()
 
 void CGameIntro::SetParametarsLoadedFromDialog()
 {	
+	m_gameConfiguration.GetGridDetails();
 	m_dialogParameters.setPuzzleDetails(m_gameConfiguration);
 	x = m_gameConfiguration.gridDetailsCollection[0].GetXSize();
 	y = m_gameConfiguration.gridDetailsCollection[0].GetYSize();

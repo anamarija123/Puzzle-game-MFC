@@ -7,6 +7,11 @@
 using namespace std;
 void CGameConfiguration::GetPuzzleDetails(int puzzleId)
 {
+	if (!puzzleDetailsCollection.empty())
+	{
+		puzzleDetailsCollection.clear();
+	}
+
 	const TCHAR* filename = _T(".\\puzzleGame.ini");
 	WCHAR sectionName[100];
 	WCHAR previewImage[100];
@@ -23,6 +28,11 @@ void CGameConfiguration::GetPuzzleDetails(int puzzleId)
 }
 void CGameConfiguration::GetGridDetails()
 {
+	if (!gridDetailsCollection.empty())
+	{
+		gridDetailsCollection.clear();
+	}
+
 	const TCHAR* filename = _T(".\\puzzleGame.ini");
 	xGrid = GetPrivateProfileInt(_T("GameStart"), _T("Width"),7, filename);
 	yGrid = GetPrivateProfileInt(_T("GameStart"), _T("Height"), 7, filename);
