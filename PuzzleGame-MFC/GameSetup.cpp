@@ -92,8 +92,8 @@ void CGameSetUp::Swap(std::vector<POINT>gamerClickCoords)
 	secondClickedPieceCoords.y = gamerClickCoords[1].y;
 
 
-	int index = firstClickedPieceCoords.y*heightNumber + firstClickedPieceCoords.x;
-	int index2 = secondClickedPieceCoords.y*heightNumber + secondClickedPieceCoords.x;
+	int index = firstClickedPieceCoords.y*widthNumber + firstClickedPieceCoords.x;
+	int index2 = secondClickedPieceCoords.y*widthNumber + secondClickedPieceCoords.x;
 	
 	temp = ShuffleCoords[index][0];
 	ShuffleCoords[index][0] = ShuffleCoords[index2][0];
@@ -124,18 +124,25 @@ void CGameSetUp::DrawPieces(HDC HwINdC)
 	int quantity_x = m_pictureWidth / widthNumber;
 	int quantity_y = m_pictureHeight / heightNumber;
 
-
+	int k = 0;
 	for (int i = 0; i < widthNumber*heightNumber; i++)
 	{
-
+	
+		if (i % widthNumber == 0 && i != 0)
+		{
+			++k;
+		}
+		
 		pieces.x = ShuffleCoords[i][0];
 		pieces.y = ShuffleCoords[i][1];
 		BOOL qRetBlit = ::BitBlt(
 			HwINdC,
 			i%widthNumber* quantity_x,
-			i / heightNumber * quantity_y,
+			k % heightNumber * quantity_y,
 			quantity_x, quantity_y,
 			hLocalDC, pieces.x - quantity_x, pieces.y - quantity_y, SRCCOPY);
+
+	
 	}
 
 }
