@@ -17,42 +17,43 @@ void CGameSetUp::initializeParameters(int height, int width, wstring picturePath
 {
 	heightNumber = height;
 	widthNumber = width;
-	
+
 	if (!Coords.empty())
 	{
 		Coords.clear();
 	}
 
-	if (!copyOriginalCoords.empty())
+	if (!ShuffleCoords.empty())
 	{
-		copyOriginalCoords.clear();
+		ShuffleCoords.clear();
 	}
 
-	if (!ShuffledCoords.empty())
+	for (int i = 0; i < width*height; i++)
 	{
-		ShuffledCoords.clear();
-	}
-
-
-	for (int i = m_pictureHeight / height; i <= m_pictureHeight; i += m_pictureHeight / height)
-	{
-		original.y=i;
-		for (int j = m_pictureWidth / width; j <= m_pictureWidth; j += m_pictureWidth / width)
+		vector<int>temp;
+		for (int j = 0; j < 2; j++)
 		{
-			original.x = j;
-			Coords.push_back(original);
+			temp.push_back(i);
 		}
-	}
-	
-	for each (POINT coord in Coords)
-	{
-		copyOriginalCoords.push_back(coord);
+		Coords.push_back(temp);
 	}
 
-	for each (POINT coord in Coords)
+	int index = 0;
+	while (index < height*width)
 	{
-		ShuffledCoords.push_back(coord);
+		for (int i = m_pictureHeight / height; i <= m_pictureHeight; i += m_pictureHeight / height)
+		{
+			for (int j = m_pictureWidth / width; j <= m_pictureWidth; j += m_pictureWidth / width)
+			{
+				Coords[index][0] = j;
+				Coords[index][1] = i;
+				++index;
+			}
+		}
+
 	}
+
+	ShuffleCoords = Coords;
 }
 
 void CGameSetUp::DrawGrid(CPaintDC* dc, RECT rect, HWND hwnd, HDC HwINdC)
@@ -75,78 +76,40 @@ void CGameSetUp::DrawGrid(CPaintDC* dc, RECT rect, HWND hwnd, HDC HwINdC)
 
 void CGameSetUp::Swap(std::vector<POINT>gamerClickCoords)
 {
-
-	if (!swapCoordsToShow.empty())
-	{
-		swapCoordsToShow.clear();
-	}
+	POINT firstClickedPieceCoords;
+	POINT secondClickedPieceCoords;
+	int temp;
+	int temp2;
 	if (gamerClickCoords.empty())
 	{
-		throw "no coords in vector";
+		throw "there are no gamer clicks coordinates";
 	}
 
+	firstClickedPieceCoords.x = gamerClickCoords[0].x;//2
+	firstClickedPieceCoords.y = gamerClickCoords[0].y;//1
 
-	int sizeOfOriginalVectorCoords = copyOriginalCoords.size();
+	secondClickedPieceCoords.x = gamerClickCoords[1].x;//3
+	secondClickedPieceCoords.y = gamerClickCoords[1].y;//2
+
+
+	int index = firstClickedPieceCoords.y*heightNumber + firstClickedPieceCoords.x;
+	int index2 = secondClickedPieceCoords.y*heightNumber + secondClickedPieceCoords.x;
 	
-	int j = 0;
+	temp = ShuffleCoords[index][0];
+	ShuffleCoords[index][0] = ShuffleCoords[index2][0];
+	ShuffleCoords[index2][0] = temp; 
 	
-		for (int i = 0; i < sizeOfOriginalVectorCoords; ++i)
-		{
-			if (copyOriginalCoords[i].x > gamerClickCoords[j].x && copyOriginalCoords[i].y > gamerClickCoords[j].y)
-			{
-				swapCoordsToShow.push_back(copyOriginalCoords[i]);//isto clean
-				gamerClickCoords.erase(gamerClickCoords.begin() + j);
-				if (gamerClickCoords.empty())
-				{
-					break;
-				}
-			}
-		}
-		POINT clickCoordFirst = swapCoordsToShow[0];
-		POINT clickCoordSecond = swapCoordsToShow[1];
-		POINT replaceCoords;
-		int index = 0;
-		int index2 = 0;
-
-		for (int i = 0; i < ShuffledCoords.size(); ++i)
-		{
-			if (ShuffledCoords[i].x == swapCoordsToShow[0].x
-				&& ShuffledCoords[i].y == swapCoordsToShow[0].y)
-			{
-				index = i;
-				replaceCoords = ShuffledCoords[i];
-				ShuffledCoords[i] = clickCoordSecond;
-				if (i != ShuffledCoords.size())
-				{
-					++i;
-				}
-
-			}
-
-			if (ShuffledCoords[i].x == swapCoordsToShow[1].x
-				&& ShuffledCoords[i].y == swapCoordsToShow[1].y)
-			{
-				index2 = i;
-				//replaceCoords = ShuffledCoords[i];
-				ShuffledCoords[i] = clickCoordFirst;
-				//std::replace(ShuffledCoords.begin()+index, ShuffledCoords.end(), replaceCoords, clickCoordFirst); // 10
-			}
-		}
-
-		if (copyOriginalCoords == ShuffledCoords)
-		{
-			::MessageBox(NULL, _T("EQUALS"), _T("GAME IS OVER"), MB_OK);
-		}
-
-		swapCoordsToShow.clear();
+	temp2 = ShuffleCoords[index][1];
+	ShuffleCoords[index][1] = ShuffleCoords[index2][1];
+	ShuffleCoords[index2][1] = temp2;
 }
 
 
 bool CGameSetUp::Shuffle() 
 {
-	std::srand(unsigned(std::time(0)));
+	//std::srand(unsigned(std::time(0)));
 	
-	std::random_shuffle(ShuffledCoords.begin(), ShuffledCoords.end());
+	std::random_shuffle(ShuffleCoords.begin(), ShuffleCoords.end());
 	return true;
 }
 
@@ -160,7 +123,8 @@ void CGameSetUp::DrawPieces(HDC HwINdC)
 	for (int i = 0; i < widthNumber*heightNumber; i++)
 	{
 
-		pieces = ShuffledCoords.at(i);
+		pieces.x = ShuffleCoords[i][0];
+		pieces.y = ShuffleCoords[i][1];
 		BOOL qRetBlit = ::BitBlt(
 			HwINdC,
 			i%widthNumber* quantity_x,
@@ -169,9 +133,6 @@ void CGameSetUp::DrawPieces(HDC HwINdC)
 			hLocalDC, pieces.x - quantity_x, pieces.y - quantity_y, SRCCOPY);
 	}
 
-	::SelectObject(hLocalDC, hOldBmp);
-	::DeleteDC(hLocalDC);
-	::DeleteObject(hBitmap);
 }
 
 

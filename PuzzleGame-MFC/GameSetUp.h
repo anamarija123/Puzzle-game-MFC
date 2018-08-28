@@ -24,16 +24,16 @@ public:
 	const int GetPictureWidth(void) { return m_pictureWidth; }
 	const int GetPictureHeight(void) { return m_pictureHeight; }
 
+	const int GetNumberOfColumns(void) { return heightNumber; }
+	const int GetNumberOfRows(void) { return widthNumber; }
+
 private:
 	POINT original;
 	POINT second_point;	
 	POINT pieces;
-	std::vector<POINT>Coords;
-	std::vector<POINT>ShuffledCoords;
-	std::vector <POINT> swapCoordsToShow;
-	std::vector<POINT>::iterator it;
-
-
+	//std::vector<POINT>Coords;
+	std::vector < vector<int>> Coords;
+	std::vector < vector<int>> ShuffleCoords;
 	int heightNumber;
 	int widthNumber;
 

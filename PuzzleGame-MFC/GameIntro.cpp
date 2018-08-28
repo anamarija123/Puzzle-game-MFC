@@ -41,7 +41,7 @@ void CGameIntro::SetParametarsLoadedFromDialog()
 	m_gameConfiguration.SetGridDetails(x, y);	
 }
 
-void CGameIntro::SetGridAndPictureForGame(HDC hDC,CPaintDC* dc, RECT rect, HWND hwnd,int indicator)
+void CGameIntro::SetParametersForGame(HDC hDC)
 {
 	imagePath = m_dialogParameters.GetPictureForGame();
 	bool pictureOpened = m_setupGame.LoadBitmapPicture(hDC,imagePath.c_str());
@@ -49,12 +49,12 @@ void CGameIntro::SetGridAndPictureForGame(HDC hDC,CPaintDC* dc, RECT rect, HWND 
 	{
 		m_setupGame.initializeParameters(x, y, imagePath);
 	}
-	if (indicator == 0)
-	{
-		m_setupGame.Shuffle();
-	}
 	
-//	setup.ShowPicture(hDC);
+		m_setupGame.Shuffle();
+}
+
+void CGameIntro::SetGridAndPictureForGame(HDC hDC, CPaintDC* dc, RECT rect, HWND hwnd)
+{
 	m_setupGame.DrawGrid(dc, rect, hwnd, hDC);
 	m_setupGame.DrawPieces(hDC);
 }
