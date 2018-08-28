@@ -85,11 +85,11 @@ void CGameSetUp::Swap(std::vector<POINT>gamerClickCoords)
 		throw "there are no gamer clicks coordinates";
 	}
 
-	firstClickedPieceCoords.x = gamerClickCoords[0].x;//2
-	firstClickedPieceCoords.y = gamerClickCoords[0].y;//1
+	firstClickedPieceCoords.x = gamerClickCoords[0].x;
+	firstClickedPieceCoords.y = gamerClickCoords[0].y;
 
-	secondClickedPieceCoords.x = gamerClickCoords[1].x;//3
-	secondClickedPieceCoords.y = gamerClickCoords[1].y;//2
+	secondClickedPieceCoords.x = gamerClickCoords[1].x;
+	secondClickedPieceCoords.y = gamerClickCoords[1].y;
 
 
 	int index = firstClickedPieceCoords.y*heightNumber + firstClickedPieceCoords.x;
@@ -102,6 +102,11 @@ void CGameSetUp::Swap(std::vector<POINT>gamerClickCoords)
 	temp2 = ShuffleCoords[index][1];
 	ShuffleCoords[index][1] = ShuffleCoords[index2][1];
 	ShuffleCoords[index2][1] = temp2;
+
+	if (ShuffleCoords == Coords)
+	{
+		::MessageBox(NULL, _T("FINISH"), _T("GAME OVER"), MB_OK);
+	}
 }
 
 
