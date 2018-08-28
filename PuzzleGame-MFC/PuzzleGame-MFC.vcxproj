@@ -179,9 +179,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="PointOperators.h" />
     <ClInclude Include="PuzzleGameView.h" />
-    <ClInclude Include="GameDocument.h" />
     <ClInclude Include="GameSetUp.h" />
     <ClInclude Include="GameIntro.h" />
     <ClInclude Include="GameConfiguration.h" />
@@ -195,9 +193,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PointOperators.cpp" />
     <ClCompile Include="PuzzleGameView.cpp" />
-    <ClCompile Include="GameDocument.cpp" />
     <ClCompile Include="GameSetup.cpp" />
     <ClCompile Include="GameIntro.cpp" />
     <ClCompile Include="GameConfiguration.cpp" />

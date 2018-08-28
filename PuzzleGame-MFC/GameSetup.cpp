@@ -96,7 +96,7 @@ void CGameSetUp::Swap(std::vector<POINT>gamerClickCoords)
 
 bool CGameSetUp::Shuffle() 
 {
-	//std::srand(unsigned(std::time(0)));
+	std::srand(unsigned(std::time(0)));
 	
 	std::random_shuffle(ShuffleCoords.begin(), ShuffleCoords.end());
 	return true;

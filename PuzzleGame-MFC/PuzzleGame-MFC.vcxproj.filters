@@ -45,16 +45,10 @@
     <ClInclude Include="GameIntro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameDocument.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PuzzleGameView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameSetUp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PointOperators.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -83,16 +77,10 @@
     <ClCompile Include="GameIntro.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameDocument.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PuzzleGameView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameSetup.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PointOperators.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
