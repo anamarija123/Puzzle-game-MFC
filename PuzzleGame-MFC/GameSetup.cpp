@@ -56,22 +56,6 @@ void CGameSetUp::initializeParameters(int height, int width, wstring picturePath
 	ShuffleCoords = Coords;
 }
 
-void CGameSetUp::DrawGrid(CPaintDC* dc, RECT rect, HWND hwnd, HDC HwINdC)
-{
-
-	GetClientRect(hwnd, &rect);
-	int i;
-	int k = 0;
-	for (i = 0; i < rect.right; i = i + rect.right / widthNumber)
-		
-	{
-		dc->MoveTo(i, 0), dc->LineTo(i, rect.bottom);		
-	}
-	
-	for (int i = 0; i < rect.bottom; i = i + rect.bottom / heightNumber)
-		dc->MoveTo(0, i), dc->LineTo(rect.right, i);
-
-}
 
 
 void CGameSetUp::Swap(std::vector<POINT>gamerClickCoords)
@@ -105,7 +89,7 @@ void CGameSetUp::Swap(std::vector<POINT>gamerClickCoords)
 
 	if (ShuffleCoords == Coords)
 	{
-		::MessageBox(NULL, _T("FINISH"), _T("GAME OVER"), MB_OK);
+		::MessageBox(NULL, _T("GAME OVER"), _T("FINISH"), MB_OK);
 	}
 }
 

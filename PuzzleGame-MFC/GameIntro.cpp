@@ -53,8 +53,7 @@ void CGameIntro::SetParametersForGame(HDC hDC)
 		m_setupGame.Shuffle();
 }
 
-void CGameIntro::SetGridAndPictureForGame(HDC hDC, CPaintDC* dc, RECT rect, HWND hwnd)
+void CGameIntro::SetPictureForGame(HDC hDC)
 {
-	m_setupGame.DrawGrid(dc, rect, hwnd, hDC);
 	m_setupGame.DrawPieces(hDC);
 }
