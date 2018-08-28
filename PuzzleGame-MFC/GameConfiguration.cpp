@@ -7,11 +7,6 @@
 using namespace std;
 void CGameConfiguration::GetPuzzleDetails(int puzzleId)
 {
-	if (!puzzleDetailsCollection.empty())
-	{
-		puzzleDetailsCollection.clear();
-	}
-
 	const TCHAR* filename = _T(".\\puzzleGame.ini");
 	WCHAR sectionName[100];
 	WCHAR previewImage[100];
