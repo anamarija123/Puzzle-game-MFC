@@ -1,7 +1,6 @@
 #pragma once
 
 #include "PuzzleDetails.h"
-#include "TimerDetails.h"
 #include <vector>
 #include "GridDetails.h"
 
