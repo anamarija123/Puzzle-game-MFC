@@ -125,8 +125,6 @@ void CGameSetUp::DrawPieces(HDC HwINdC)
 			k % heightNumber * quantity_y,
 			quantity_x, quantity_y,
 			hLocalDC, pieces.x - quantity_x, pieces.y - quantity_y, SRCCOPY);
-
-	
 	}
 
 }
