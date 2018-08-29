@@ -45,13 +45,19 @@ void CGameIntro::SetParametarsLoadedFromDialog()
 void CGameIntro::SetParametersForGame(HDC hDC)
 {
 	imagePath = m_dialogParameters.GetPictureForGame();
+	//m_preview.SetPicturePreview(imagePath);
 	bool pictureOpened = m_setupGame.LoadBitmapPicture(hDC,imagePath.c_str());
 	if (pictureOpened == true)
 	{
 		m_setupGame.initializeParameters(x, y, imagePath);
 	}
 	
-		m_setupGame.Shuffle();
+	ShufflePieces();
+}
+
+void CGameIntro::ShufflePieces()
+{
+	m_setupGame.Shuffle();
 }
 
 void CGameIntro::SetPictureForGame(HDC hDC)

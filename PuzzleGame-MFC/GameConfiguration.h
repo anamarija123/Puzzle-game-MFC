@@ -11,7 +11,6 @@ private:
 	int yGrid;
 public:
 	void GetPuzzleDetails(int puzzleId);
-//	CTimerDetails GetTimerDetails(int timerId);
 	void GetGridDetails();
 	void SetGridDetails(int x, int y);
 	std::vector<CPuzzleDetails> puzzleDetailsCollection;

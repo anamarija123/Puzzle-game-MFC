@@ -18,11 +18,12 @@ public:
 	void SetParametarsLoadedFromIniFile();
 	void SetPictureForGame(HDC hDC);
 	void SetParametersForGame(HDC hDC);
+	void ShufflePieces();
 	void start();
 	CGameConfiguration m_gameConfiguration;
 	CSetGameDialog m_dialogParameters;
 	CGameSetUp m_setupGame;
 	wstring imagePath;
-	
+//	CPuzzlePicturePreview m_preview;
 };
 

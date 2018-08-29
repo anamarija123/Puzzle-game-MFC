@@ -166,18 +166,5 @@ bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, LPCWSTR szFileName)
 	return true;
 }
 
-bool CGameSetUp::ShowPicture(HDC HwINdC)
-{
-	BOOL qRetBlit = ::BitBlt(HwINdC, 0, 0, qBitmap.bmWidth, qBitmap.bmHeight, hLocalDC, 0, 0, SRCCOPY);
-	if (!qRetBlit)
-	{
-		::MessageBox(NULL, _T("BItBlt failed"), _T("Error"), MB_OK);
-		return false;
-	}
-	
-	::SelectObject(hLocalDC, hOldBmp);
-	::DeleteDC(hLocalDC);
-	::DeleteObject(hBitmap);
-	
-}
+
 
