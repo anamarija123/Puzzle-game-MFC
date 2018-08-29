@@ -8,10 +8,9 @@
 class CGameIntro
 {
 private:
-	
-public:
 	int x;
 	int y;
+public:
 	CGameIntro();
 	~CGameIntro();
 	void SetParametarsLoadedFromDialog();
@@ -24,6 +23,5 @@ public:
 	CSetGameDialog m_dialogParameters;
 	CGameSetUp m_setupGame;
 	wstring imagePath;
-//	CPuzzlePicturePreview m_preview;
 };
 

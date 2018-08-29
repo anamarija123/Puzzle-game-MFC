@@ -3,7 +3,7 @@
 #include <stdlib.h>  
 #include "GameSetUp.h"
 #include "MainFrm.h"
-#include <ctime>        // std::time
+#include <ctime>       
 CGameSetUp::CGameSetUp()
 {
 }
@@ -12,7 +12,12 @@ CGameSetUp::CGameSetUp()
 CGameSetUp::~CGameSetUp()
 {
 }
-
+/*
+initializeParameters function initialize two dimensional vector with coords of picture, depend on height and width 
+@height dimension of picture
+@width dimension of picture
+@ picturePath chosen picture for game
+*/
 void CGameSetUp::initializeParameters(int height, int width, wstring picturePath )
 {
 	heightNumber = height;
@@ -56,7 +61,9 @@ void CGameSetUp::initializeParameters(int height, int width, wstring picturePath
 	ShuffleCoords = Coords;
 }
 
-
+/*
+Swap function swaping piece of picture depend on user clicks
+*/
 
 void CGameSetUp::Swap(std::vector<POINT>gamerClickCoords)
 {
@@ -75,10 +82,11 @@ void CGameSetUp::Swap(std::vector<POINT>gamerClickCoords)
 	secondClickedPieceCoords.x = gamerClickCoords[1].x;
 	secondClickedPieceCoords.y = gamerClickCoords[1].y;
 
-
+	/*algorithm for find index in Coords vector*/
 	int index = firstClickedPieceCoords.y*widthNumber + firstClickedPieceCoords.x;
 	int index2 = secondClickedPieceCoords.y*widthNumber + secondClickedPieceCoords.x;
-	
+
+	/*Swap*/
 	temp = ShuffleCoords[index][0];
 	ShuffleCoords[index][0] = ShuffleCoords[index2][0];
 	ShuffleCoords[index2][0] = temp; 
@@ -87,12 +95,12 @@ void CGameSetUp::Swap(std::vector<POINT>gamerClickCoords)
 	ShuffleCoords[index][1] = ShuffleCoords[index2][1];
 	ShuffleCoords[index2][1] = temp2;
 
+	/*if ShuffleCoords vector equals to Coords give a message for game over*/
 	if (ShuffleCoords == Coords)
 	{
 		::MessageBox(NULL, _T("GAME OVER"), _T("FINISH"), MB_OK);
 	}
 }
-
 
 bool CGameSetUp::Shuffle() 
 {
@@ -102,7 +110,10 @@ bool CGameSetUp::Shuffle()
 	return true;
 }
 
-
+/*
+DrawPieces function draw puzzles on window from ShuffleCoords vector
+@param HwINdC a handle to the destination device context.
+*/
 void CGameSetUp::DrawPieces(HDC HwINdC)
 {
 	int quantity_x = m_pictureWidth / widthNumber;
@@ -129,7 +140,11 @@ void CGameSetUp::DrawPieces(HDC HwINdC)
 
 }
 
-
+/*
+LoadBitmapPicture load picture from file 
+@param HwINdC a handle to the destination device context.
+@param szFileName path to picture
+*/
 
 bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, LPCWSTR szFileName)
 {

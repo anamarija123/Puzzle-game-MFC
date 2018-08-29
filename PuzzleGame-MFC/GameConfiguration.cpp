@@ -2,9 +2,13 @@
 #include "GameConfiguration.h"
 #include <list>
 #include "PuzzleDetails.h"
-#include <string.h>
+#include <string>
 
-using namespace std;
+/*
+GetPuzzleDetails function load picture paths from ini file
+@param puzzleId is number of section in ini file
+*/
+using std::string;
 void CGameConfiguration::GetPuzzleDetails(int puzzleId)
 {
 	const TCHAR* filename = _T(".\\puzzleGame.ini");
@@ -21,6 +25,11 @@ void CGameConfiguration::GetPuzzleDetails(int puzzleId)
 	puzzleDetailsCollection.push_back(puzzleDetails);
 
 }
+
+/*
+GetGridDetails function load rows and columns from ini file.
+If there is no writen number, default is 7
+*/
 void CGameConfiguration::GetGridDetails()
 {
 	if (!gridDetailsCollection.empty())
@@ -36,9 +45,15 @@ void CGameConfiguration::GetGridDetails()
 	gridDetailsCollection.push_back(gridDetails);
 	
 }
-void CGameConfiguration::SetGridDetails(int x, int y)
+/*
+SetGridDetails function write in ini file entered rows and columns by user in dialog.
+@param rows is number of rows
+@param columns is number of columns
+*/
+
+void CGameConfiguration::SetGridDetails(int rows, int columns)
 {
 	const TCHAR* filename = _T(".\\puzzleGame.ini");
-	WritePrivateProfileString(_T("GameStart"), _T("Width"), std::to_wstring(x).c_str(), filename);
-	WritePrivateProfileString(_T("GameStart"), _T("Height"), std::to_wstring(y).c_str(), filename);
+	WritePrivateProfileString(_T("GameStart"), _T("Width"), std::to_wstring(rows).c_str(), filename);
+	WritePrivateProfileString(_T("GameStart"), _T("Height"), std::to_wstring(columns).c_str(), filename);
 }

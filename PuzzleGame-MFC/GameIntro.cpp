@@ -1,9 +1,11 @@
 #include "stdafx.h"
 #include "GameIntro.h"
 
+/*
+start function call other functions to load from ini file or dialog.
+*/
 void CGameIntro::start()
-{
-	
+{	
 	SetParametarsLoadedFromIniFile();
 	SetParametarsLoadedFromDialog();
 }
@@ -15,16 +17,19 @@ CGameIntro::CGameIntro()
 CGameIntro::~CGameIntro()
 {
 }
-
+/*
+SetParametarsLoadedFromIniFile function call functions for loading from ini
+*/
 void CGameIntro::SetParametarsLoadedFromIniFile()
 {
-	//m_gameConfiguration.GetGridDetails();
 	m_gameConfiguration.GetPuzzleDetails(1);
 	m_gameConfiguration.GetPuzzleDetails(2);
 	m_gameConfiguration.GetPuzzleDetails(3);
 }
 
-
+/*
+SetParametarsLoadedFromDialog function call functions for setting game from user input in dialog
+*/
 void CGameIntro::SetParametarsLoadedFromDialog()
 {	
 	m_gameConfiguration.GetGridDetails();
@@ -39,13 +44,15 @@ void CGameIntro::SetParametarsLoadedFromDialog()
 	
 	x = m_dialogParameters.X;
 	y = m_dialogParameters.Y;
-	m_gameConfiguration.SetGridDetails(x, y);	
+	m_gameConfiguration.SetGridDetails(x, y);
+	imagePath = m_dialogParameters.GetPictureForGame();
 }
 
+/*
+SetParametersForGame function call functions and give them loaded parameters
+*/
 void CGameIntro::SetParametersForGame(HDC hDC)
 {
-	imagePath = m_dialogParameters.GetPictureForGame();
-	//m_preview.SetPicturePreview(imagePath);
 	bool pictureOpened = m_setupGame.LoadBitmapPicture(hDC,imagePath.c_str());
 	if (pictureOpened == true)
 	{
@@ -55,11 +62,18 @@ void CGameIntro::SetParametersForGame(HDC hDC)
 	ShufflePieces();
 }
 
+/*
+ShufflePieces function call function for shuffle.
+*/
 void CGameIntro::ShufflePieces()
 {
 	m_setupGame.Shuffle();
 }
 
+/*
+SetPictureForGame function call function to draw on board.
+@param hDC a handle to the destination device context.
+*/
 void CGameIntro::SetPictureForGame(HDC hDC)
 {
 	m_setupGame.DrawPieces(hDC);

@@ -12,7 +12,7 @@ private:
 public:
 	void GetPuzzleDetails(int puzzleId);
 	void GetGridDetails();
-	void SetGridDetails(int x, int y);
+	void SetGridDetails(int rows, int columns);
 	std::vector<CPuzzleDetails> puzzleDetailsCollection;
 	std::vector<CGridDetails> gridDetailsCollection;
 	

@@ -1,7 +1,11 @@
 #include "stdafx.h"
 #include "GridDetails.h"
 
-
+/*
+CGridDetails setting grid info
+@param xSize number of rows
+@param ySize number of columns
+*/
 CGridDetails::CGridDetails(const int xSize, const int ySize)
 {
 	if (xSize == 0)
@@ -15,7 +19,6 @@ CGridDetails::CGridDetails(const int xSize, const int ySize)
 	}
 	this->m_YSize = ySize;
 }
-
 
 CGridDetails::~CGridDetails()
 {
