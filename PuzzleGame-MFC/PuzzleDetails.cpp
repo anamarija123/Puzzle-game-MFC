@@ -22,6 +22,7 @@ CPuzzleDetails::CPuzzleDetails(const wstring previewImage, const wstring gameIma
 	}
 	
 	m_wchGameImage.append(gameImage);
+
 }
 
 

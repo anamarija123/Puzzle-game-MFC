@@ -42,5 +42,6 @@ private:
 	int m_pictureHeight;
 	int m_pictureWidth;
 
+	
 };
 

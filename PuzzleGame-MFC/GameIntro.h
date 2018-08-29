@@ -10,6 +10,7 @@ class CGameIntro
 private:
 	int x;
 	int y;
+	wstring m_wchImagePath;
 public:
 	CGameIntro();
 	~CGameIntro();
@@ -18,10 +19,11 @@ public:
 	void SetPictureForGame(HDC hDC);
 	void SetParametersForGame(HDC hDC);
 	void ShufflePieces();
+	const wstring GameImagePath(void) { return m_wchImagePath; }
 	void start();
 	CGameConfiguration m_gameConfiguration;
 	CSetGameDialog m_dialogParameters;
 	CGameSetUp m_setupGame;
-	wstring imagePath;
+	
 };
 

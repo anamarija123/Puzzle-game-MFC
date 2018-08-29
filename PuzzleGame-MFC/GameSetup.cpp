@@ -182,4 +182,3 @@ bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, LPCWSTR szFileName)
 }
 
 
-
