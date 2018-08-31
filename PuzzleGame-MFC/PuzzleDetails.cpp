@@ -1,13 +1,12 @@
 #include "stdafx.h"
 #include "PuzzleDetails.h"
-#include<string.h>
 
 /*
 CPuzzleDetails setting paths from previewImage in dialog and gameImage for game
 @param previewImage path of little picture
 @param gameImage path of big picture
 */
-CPuzzleDetails::CPuzzleDetails(const wstring previewImage, const wstring gameImage)
+CPuzzleDetails::CPuzzleDetails(const std::wstring previewImage, const std::wstring gameImage)
 {
 	if (previewImage.empty())
 	{
@@ -22,7 +21,6 @@ CPuzzleDetails::CPuzzleDetails(const wstring previewImage, const wstring gameIma
 	}
 	
 	m_wchGameImage.append(gameImage);
-
 }
 
 

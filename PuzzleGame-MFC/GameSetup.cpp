@@ -3,7 +3,8 @@
 #include <stdlib.h>  
 #include "GameSetUp.h"
 #include "MainFrm.h"
-#include <ctime>       
+#include <ctime>     
+
 CGameSetUp::CGameSetUp()
 {
 }
@@ -18,7 +19,7 @@ initializeParameters function initialize two dimensional vector with coords of p
 @width dimension of picture
 @ picturePath chosen picture for game
 */
-void CGameSetUp::initializeParameters(int height, int width, wstring picturePath )
+void CGameSetUp::initializeParameters(int height, int width, std::wstring picturePath )
 {
 	heightNumber = height;
 	widthNumber = width;
@@ -32,31 +33,23 @@ void CGameSetUp::initializeParameters(int height, int width, wstring picturePath
 	{
 		ShuffleCoords.clear();
 	}
+	
+	Coords.resize(width*height, std::vector<int>(2));
 
-	for (int i = 0; i < width*height; i++)
-	{
-		vector<int>temp;
-		for (int j = 0; j < 2; j++)
-		{
-			temp.push_back(i);
-		}
-		Coords.push_back(temp);
-	}
+	int quantityOfHeight = m_pictureHeight / height;
+	int quantityOfWidth = m_pictureWidth / width;
+
 
 	int index = 0;
-	while (index < height*width)
-	{
-		for (int i = m_pictureHeight / height; i <= m_pictureHeight; i += m_pictureHeight / height)
+		for (int i = quantityOfHeight; i <= m_pictureHeight; i += quantityOfHeight)
 		{
-			for (int j = m_pictureWidth / width; j <= m_pictureWidth; j += m_pictureWidth / width)
+			for (int j = quantityOfWidth; j <= m_pictureWidth; j += quantityOfWidth)
 			{
 				Coords[index][0] = j;
 				Coords[index][1] = i;
 				++index;
 			}
 		}
-
-	}
 
 	ShuffleCoords = Coords;
 }
@@ -137,7 +130,11 @@ void CGameSetUp::DrawPieces(HDC HwINdC)
 			quantity_x, quantity_y,
 			hLocalDC, pieces.x - quantity_x, pieces.y - quantity_y, SRCCOPY);
 	}
-
+	/*
+	::SelectObject(hLocalDC, hOldBmp);
+	::DeleteDC(hLocalDC);
+	::DeleteObject(hBitmap);
+	*/
 }
 
 /*
@@ -148,6 +145,9 @@ LoadBitmapPicture load picture from file
 
 bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, LPCWSTR szFileName)
 {
+	BITMAP qBitmap;
+	int lReturn;
+
 	hBitmap = (HBITMAP)LoadImage(NULL, szFileName, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 
 	if (hBitmap == NULL)
@@ -174,7 +174,7 @@ bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, LPCWSTR szFileName)
 		::MessageBox(NULL, _T("SelectObj failed"), _T("Error"), MB_OK);
 		return false;
 	}
-
+	
 	m_pictureHeight = qBitmap.bmHeight;
 	m_pictureWidth = qBitmap.bmWidth;
 
@@ -182,3 +182,8 @@ bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, LPCWSTR szFileName)
 }
 
 
+void CGameSetUp::Delete()
+{
+	::DeleteDC(hLocalDC);
+	::DeleteObject(hBitmap);
+}

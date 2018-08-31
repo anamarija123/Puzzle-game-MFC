@@ -2,16 +2,15 @@
 #include "GameConfiguration.h"
 #include <list>
 #include "PuzzleDetails.h"
-#include <string>
+#include <wchar.h>
 
 /*
 GetPuzzleDetails function load picture paths from ini file
 @param puzzleId is number of section in ini file
 */
-using std::string;
 void CGameConfiguration::GetPuzzleDetails(int puzzleId)
 {
-	const TCHAR* filename = _T(".\\puzzleGame.ini");
+	const WCHAR* filename = L".\\puzzleGame.ini";
 	WCHAR sectionName[100];
 	WCHAR previewImage[100];
 	WCHAR gameImage[100];
@@ -37,7 +36,7 @@ void CGameConfiguration::GetGridDetails()
 		gridDetailsCollection.clear();
 	}
 
-	const TCHAR* filename = _T(".\\puzzleGame.ini");
+	const WCHAR* filename = L".\\puzzleGame.ini";
 	xGrid = GetPrivateProfileInt(_T("GameStart"), _T("Width"),7, filename);
 	yGrid = GetPrivateProfileInt(_T("GameStart"), _T("Height"), 7, filename);
 
@@ -53,7 +52,7 @@ SetGridDetails function write in ini file entered rows and columns by user in di
 
 void CGameConfiguration::SetGridDetails(int rows, int columns)
 {
-	const TCHAR* filename = _T(".\\puzzleGame.ini");
+	const WCHAR* filename = L".\\puzzleGame.ini";
 	WritePrivateProfileString(_T("GameStart"), _T("Width"), std::to_wstring(rows).c_str(), filename);
 	WritePrivateProfileString(_T("GameStart"), _T("Height"), std::to_wstring(columns).c_str(), filename);
 }
