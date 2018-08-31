@@ -20,6 +20,8 @@ public:
 	const int GetNumberOfColumns(void) { return heightNumber; }
 	const int GetNumberOfRows(void) { return widthNumber; }
 
+	const int GetWidthOfPiece(void) { return quantityOfWidth; }
+	const int GetHeightOfPiece(void) { return quantityOfHeight; }
 
 private:
 	POINT original;
@@ -38,6 +40,9 @@ private:
 
 	int m_pictureHeight;
 	int m_pictureWidth;
+
+	int quantityOfWidth;
+	int quantityOfHeight;
 
 };
 

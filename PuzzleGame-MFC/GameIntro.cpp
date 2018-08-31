@@ -22,6 +22,7 @@ SetParametarsLoadedFromIniFile function call functions for loading from ini
 */
 void CGameIntro::SetParametarsLoadedFromIniFile()
 {
+	m_gameConfiguration.checkCollection();
 	m_gameConfiguration.GetPuzzleDetails(1);
 	m_gameConfiguration.GetPuzzleDetails(2);
 	m_gameConfiguration.GetPuzzleDetails(3);

@@ -10,6 +10,7 @@ GetPuzzleDetails function load picture paths from ini file
 */
 void CGameConfiguration::GetPuzzleDetails(int puzzleId)
 {
+
 	const WCHAR* filename = L".\\puzzleGame.ini";
 	WCHAR sectionName[100];
 	WCHAR previewImage[100];
@@ -23,6 +24,14 @@ void CGameConfiguration::GetPuzzleDetails(int puzzleId)
 
 	puzzleDetailsCollection.push_back(puzzleDetails);
 
+}
+
+void CGameConfiguration::checkCollection()
+{
+	if (!puzzleDetailsCollection.empty())
+	{
+		puzzleDetailsCollection.clear();
+	}
 }
 
 /*

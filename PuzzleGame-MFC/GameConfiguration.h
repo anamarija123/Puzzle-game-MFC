@@ -11,6 +11,7 @@ private:
 	int yGrid;
 public:
 	void GetPuzzleDetails(int puzzleId);
+	void checkCollection();
 	void GetGridDetails();
 	void SetGridDetails(int rows, int columns);
 	std::vector<CPuzzleDetails> puzzleDetailsCollection;

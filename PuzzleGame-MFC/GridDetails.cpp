@@ -13,6 +13,7 @@ CGridDetails::CGridDetails(const int xSize, const int ySize)
 		throw "width is not defined";
 	}
 	this->m_XSize = xSize;
+
 	if (ySize == 0)
 	{
 		throw "width is not defined";

@@ -36,8 +36,8 @@ void CGameSetUp::initializeParameters(int height, int width, std::wstring pictur
 	
 	Coords.resize(width*height, std::vector<int>(2));
 
-	int quantityOfHeight = m_pictureHeight / height;
-	int quantityOfWidth = m_pictureWidth / width;
+	quantityOfHeight = m_pictureHeight / height;
+	quantityOfWidth = m_pictureWidth / width;
 
 
 	int index = 0;
@@ -130,11 +130,6 @@ void CGameSetUp::DrawPieces(HDC HwINdC)
 			quantity_x, quantity_y,
 			hLocalDC, pieces.x - quantity_x, pieces.y - quantity_y, SRCCOPY);
 	}
-	/*
-	::SelectObject(hLocalDC, hOldBmp);
-	::DeleteDC(hLocalDC);
-	::DeleteObject(hBitmap);
-	*/
 }
 
 /*
