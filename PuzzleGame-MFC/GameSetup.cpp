@@ -172,7 +172,7 @@ bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, LPCWSTR szFileName)
 	
 	m_pictureHeight = qBitmap.bmHeight;
 	m_pictureWidth = qBitmap.bmWidth;
-
+	
 	return true;
 }
 

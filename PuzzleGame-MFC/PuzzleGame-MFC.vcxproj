@@ -218,6 +218,7 @@
     <None Include="res\PuzzleGameMFC.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="puzzleGame.bmp" />
     <Image Include="res\PuzzleGame-MFC.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
