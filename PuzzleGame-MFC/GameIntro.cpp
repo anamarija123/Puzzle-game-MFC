@@ -54,7 +54,7 @@ SetParametersForGame function call functions and give them loaded parameters
 */
 void CGameIntro::SetParametersForGame(HDC hDC)
 {
-	bool pictureOpened = m_setupGame.LoadBitmapPicture(hDC,m_wchImagePath.c_str());
+	bool pictureOpened = m_setupGame.LoadBitmapPicture(hDC,m_wchImagePath);
 	if (pictureOpened == true)
 	{
 		m_setupGame.initializeParameters(x, y, m_wchImagePath);

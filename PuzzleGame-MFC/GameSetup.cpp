@@ -3,6 +3,7 @@
 #include <stdlib.h>  
 #include "GameSetUp.h"
 #include "MainFrm.h"
+#include "resource.h"
 #include <ctime>     
 
 CGameSetUp::CGameSetUp()
@@ -19,7 +20,7 @@ initializeParameters function initialize two dimensional vector with coords of p
 @width dimension of picture
 @ picturePath chosen picture for game
 */
-void CGameSetUp::initializeParameters(int height, int width, std::wstring picturePath )
+void CGameSetUp::initializeParameters(int height, int width, const TCHAR* picturePath )
 {
 	heightNumber = height;
 	widthNumber = width;
@@ -88,10 +89,13 @@ void CGameSetUp::Swap(std::vector<POINT>gamerClickCoords)
 	ShuffleCoords[index][1] = ShuffleCoords[index2][1];
 	ShuffleCoords[index2][1] = temp2;
 
+	CString msg = LoadStringFromResource(IDS_GAME_OVER);
+	CString caption = LoadStringFromResource(IDS_GAME_OVER_CAPTION);
+
 	/*if ShuffleCoords vector equals to Coords give a message for game over*/
 	if (ShuffleCoords == Coords)
 	{
-		::MessageBox(NULL, _T("GAME OVER"), _T("FINISH"), MB_OK);
+		::MessageBox(NULL, msg, caption, MB_OK);
 	}
 }
 
@@ -138,35 +142,51 @@ LoadBitmapPicture load picture from file
 @param szFileName path to picture
 */
 
-bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, LPCWSTR szFileName)
+bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, const TCHAR* szFileName)
 {
 	BITMAP qBitmap;
 	int lReturn;
+
+	CString msgBitmap;
+	CString msgObj;
+	CString msgDC;
+	CString msgSelectObj;
+	CString caption;
+
+	msgBitmap = LoadStringFromResource(IDS_FAILED);
+	caption = LoadStringFromResource(IDS_ERROR);
 
 	hBitmap = (HBITMAP)LoadImage(NULL, szFileName, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 
 	if (hBitmap == NULL)
 	{
-		::MessageBox(NULL, _T("FAILED"), _T("ERROR"), MB_OK);
+		::MessageBox(NULL, msgBitmap, caption, MB_OK);
 	}
+
+	msgObj = LoadStringFromResource(IDS_GET_OBJ);
+
 	lReturn = GetObject(reinterpret_cast<HGDIOBJ>(hBitmap), sizeof(BITMAP), reinterpret_cast<LPVOID>(&qBitmap));
 	if (!lReturn)
 	{
-		::MessageBox(NULL, _T("GetObj failed"), _T("Error"), MB_OK);
+		::MessageBox(NULL, _T("GetObj failed"), caption, MB_OK);
 		return false;
 	}
+
+	msgDC = LoadStringFromResource(IDS_DC);
 
 	hLocalDC = ::CreateCompatibleDC(HwINdC);
 	// Verify that the device context was created
 	if (hLocalDC == NULL) {
-		::MessageBox(NULL, __T("CreateCompatibleDC Failed"), __T("Error"), MB_OK);
+		::MessageBox(NULL, __T("CreateCompatibleDC Failed"), caption, MB_OK);
 		return false;
 	}
+
+	msgSelectObj = LoadStringFromResource(IDS_SELECT_OBJ);
 
 	hOldBmp = (HBITMAP)::SelectObject(hLocalDC, hBitmap);
 	if (hOldBmp == NULL)
 	{
-		::MessageBox(NULL, _T("SelectObj failed"), _T("Error"), MB_OK);
+		::MessageBox(NULL, _T("SelectObj failed"), caption, MB_OK);
 		return false;
 	}
 	
@@ -181,4 +201,16 @@ void CGameSetUp::Delete()
 {
 	::DeleteDC(hLocalDC);
 	::DeleteObject(hBitmap);
+}
+
+/*
+LoadStringFromResource get string from resource
+@param ID of string
+*/
+CString CGameSetUp::LoadStringFromResource(int ID)
+{
+	CString messageString;
+	messageString.LoadString(ID);
+
+	return messageString;
 }

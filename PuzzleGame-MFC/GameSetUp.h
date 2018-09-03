@@ -7,11 +7,12 @@ class CGameSetUp
 public:
 	CGameSetUp();
 	~CGameSetUp();
-	void initializeParameters(int height, int width, std::wstring picturePath);
+	void initializeParameters(int height, int width, const TCHAR* picturePath);
 	bool Shuffle();
 	void DrawPieces(HDC HwINdC);
 	void Swap(std::vector<POINT>gamerClickCoords);
-	bool LoadBitmapPicture(HDC HwINdC, LPCWSTR szFileName);
+	bool LoadBitmapPicture(HDC HwINdC, const TCHAR* szFileName);
+	CString LoadStringFromResource(int ID);
 	void Delete();
 
 	const int GetPictureWidth(void) { return m_pictureWidth; }

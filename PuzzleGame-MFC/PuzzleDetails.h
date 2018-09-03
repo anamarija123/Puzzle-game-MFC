@@ -6,14 +6,14 @@ class CPuzzleDetails
 {
 private:
 
-	std::wstring m_wchPreviewImage;
-	std::wstring m_wchGameImage;
+	 TCHAR m_wchPreviewImage[100];
+	 TCHAR m_wchGameImage[100];
 
 public:
-	CPuzzleDetails(const std::wstring previewImg, const std::wstring gameImg);
+	CPuzzleDetails (TCHAR* previewImage, TCHAR* gameImage);
 	~CPuzzleDetails();
 
-	const std::wstring GetPreviewImagePath(void) { return m_wchPreviewImage; }
-	const std::wstring GetGameImagePath(void) { return m_wchGameImage; }
+	const TCHAR* GetPreviewImagePath(void) { return m_wchPreviewImage; }
+	const TCHAR* GetGameImagePath(void) { return m_wchGameImage; }
 
 };

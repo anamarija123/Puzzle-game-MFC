@@ -2,7 +2,7 @@
 #include "GameConfiguration.h"
 #include <list>
 #include "PuzzleDetails.h"
-#include <wchar.h>
+#include <tchar.h>
 
 /*
 GetPuzzleDetails function load picture paths from ini file
@@ -11,12 +11,13 @@ GetPuzzleDetails function load picture paths from ini file
 void CGameConfiguration::GetPuzzleDetails(int puzzleId)
 {
 
-	const WCHAR* filename = L".\\puzzleGame.ini";
-	WCHAR sectionName[100];
-	WCHAR previewImage[100];
-	WCHAR gameImage[100];
+	const TCHAR* filename = _T(".\\puzzleGame.ini");
+	TCHAR sectionName[100];
+	TCHAR previewImage[100];
+	TCHAR gameImage[100];
 
-	swprintf(sectionName, sizeof(sectionName), L"Puzzle%d", puzzleId);
+
+	_stprintf(sectionName, _T("Puzzle%d"), puzzleId);
 	GetPrivateProfileString(sectionName, _T("PreviewImage"), NULL, previewImage, sizeof(previewImage), filename);
 	GetPrivateProfileString(sectionName, _T("GameImage"), NULL, gameImage, sizeof(gameImage), filename);
 
@@ -45,7 +46,7 @@ void CGameConfiguration::GetGridDetails()
 		gridDetailsCollection.clear();
 	}
 
-	const WCHAR* filename = L".\\puzzleGame.ini";
+	const TCHAR* filename = _T(".\\puzzleGame.ini");
 	xGrid = GetPrivateProfileInt(_T("GameStart"), _T("Width"),7, filename);
 	yGrid = GetPrivateProfileInt(_T("GameStart"), _T("Height"), 7, filename);
 
@@ -61,7 +62,12 @@ SetGridDetails function write in ini file entered rows and columns by user in di
 
 void CGameConfiguration::SetGridDetails(int rows, int columns)
 {
-	const WCHAR* filename = L".\\puzzleGame.ini";
-	WritePrivateProfileString(_T("GameStart"), _T("Width"), std::to_wstring(rows).c_str(), filename);
-	WritePrivateProfileString(_T("GameStart"), _T("Height"), std::to_wstring(columns).c_str(), filename);
+	TCHAR theRows[10];
+	TCHAR theColumns[10];
+	_stprintf(theRows, _T("%d"), rows);
+	_stprintf(theColumns, _T("%d"), columns);
+
+	const TCHAR* filename = _T(".\\puzzleGame.ini");
+	WritePrivateProfileString(_T("GameStart"), _T("Width"), theRows, filename);
+	WritePrivateProfileString(_T("GameStart"), _T("Height"), theColumns, filename);
 }
