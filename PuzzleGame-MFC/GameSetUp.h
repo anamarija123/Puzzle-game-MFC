@@ -12,7 +12,6 @@ public:
 	void DrawPieces(HDC HwINdC);
 	void Swap(std::vector<POINT>gamerClickCoords);
 	bool LoadBitmapPicture(HDC HwINdC, const TCHAR* szFileName);
-	CString LoadStringFromResource(int ID);
 	void Delete();
 
 	const int GetPictureWidth(void) { return m_pictureWidth; }
@@ -45,5 +44,6 @@ private:
 	int quantityOfWidth;
 	int quantityOfHeight;
 
+	CString LoadStringFromResource(int ID);
 };
 

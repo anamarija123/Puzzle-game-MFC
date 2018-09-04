@@ -19,8 +19,10 @@ public:
 	void SetPictureForGame(HDC hDC);
 	void SetParametersForGame(HDC hDC);
 	void ShufflePieces();
-	const TCHAR* GameImagePath(void) { return m_wchImagePath; }
 	void start();
+
+	const TCHAR* GameImagePath(void) { return m_wchImagePath; }
+
 	CGameConfiguration m_gameConfiguration;
 	CSetGameDialog m_dialogParameters;
 	CGameSetUp m_setupGame;
