@@ -209,6 +209,7 @@ void CGameSetUp::Delete()
 	DeleteDC(hLocalDC);
 	DeleteObject(hBitmap);
 	numbytes = GetObject(hBitmap, sizeof(BITMAP), &bm);
+	
 }
 
 /*

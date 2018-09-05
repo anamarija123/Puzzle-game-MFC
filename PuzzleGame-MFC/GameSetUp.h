@@ -27,7 +27,7 @@ private:
 	HBITMAP hBitmap;
 	HDC hLocalDC;
 	HBITMAP hOldBmp;
-	HDC vbc;
+
 	POINT original;
 	POINT second_point;	
 	POINT pieces;
