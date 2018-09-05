@@ -3,6 +3,7 @@
 #include "PuzzleDetails.h"
 #include <vector>
 #include "GridDetails.h"
+typedef std::basic_string<TCHAR>   tstring;
 
 class CGameConfiguration
 {
@@ -10,7 +11,7 @@ private:
 	int xGrid;
 	int yGrid;
 public:
-	void GetPuzzleDetails(int puzzleId);
+	void GetPuzzleDetails(TCHAR puzzleId);
 	void checkCollection();
 	void GetGridDetails();
 	void SetGridDetails(int rows, int columns);

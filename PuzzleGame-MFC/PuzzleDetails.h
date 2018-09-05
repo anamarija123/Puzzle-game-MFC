@@ -1,19 +1,19 @@
 #pragma once
 #include<string> 
-
+typedef std::basic_string<TCHAR>   tstring;
 
 class CPuzzleDetails
 {
 private:
 
-	 TCHAR m_wchPreviewImage[100];
-	 TCHAR m_wchGameImage[100];
+	 tstring m_wchPreviewImage;
+	 tstring m_wchGameImage;
 
 public:
-	CPuzzleDetails (TCHAR* previewImage, TCHAR* gameImage);
+	CPuzzleDetails (tstring previewImage, tstring gameImage);
 	~CPuzzleDetails();
 
-	const TCHAR* GetPreviewImagePath(void) { return m_wchPreviewImage; }
-	const TCHAR* GetGameImagePath(void) { return m_wchGameImage; }
+	tstring GetPreviewImagePath(void) { return m_wchPreviewImage; }
+	tstring GetGameImagePath(void) { return m_wchGameImage; }
 
 };

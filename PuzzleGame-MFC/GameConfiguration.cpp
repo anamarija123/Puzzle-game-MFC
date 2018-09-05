@@ -2,24 +2,24 @@
 #include "GameConfiguration.h"
 #include <list>
 #include "PuzzleDetails.h"
-#include <tchar.h>
 
 /*
 GetPuzzleDetails function load picture paths from ini file
 @param puzzleId is number of section in ini file
 */
-void CGameConfiguration::GetPuzzleDetails(int puzzleId)
+void CGameConfiguration::GetPuzzleDetails(TCHAR puzzleId)
 {
 
-	const TCHAR* filename = _T(".\\puzzleGame.ini");
-	TCHAR sectionName[100];
+	tstring filename = _T(".\\puzzleGame.ini");
+	tstring sectionName;
 	TCHAR previewImage[100];
 	TCHAR gameImage[100];
 
-
-	_stprintf(sectionName, _T("Puzzle%d"), puzzleId);
-	GetPrivateProfileString(sectionName, _T("PreviewImage"), NULL, previewImage, sizeof(previewImage), filename);
-	GetPrivateProfileString(sectionName, _T("GameImage"), NULL, gameImage, sizeof(gameImage), filename);
+	sectionName = _T("Puzzle");
+	sectionName += puzzleId;
+	
+	GetPrivateProfileString(sectionName.c_str(), _T("PreviewImage"), NULL, previewImage, sizeof(previewImage), filename.c_str());
+	GetPrivateProfileString(sectionName.c_str(), _T("GameImage"), NULL, gameImage, sizeof(gameImage), filename.c_str());
 
 	CPuzzleDetails puzzleDetails(previewImage, gameImage);
 
@@ -46,9 +46,9 @@ void CGameConfiguration::GetGridDetails()
 		gridDetailsCollection.clear();
 	}
 
-	const TCHAR* filename = _T(".\\puzzleGame.ini");
-	xGrid = GetPrivateProfileInt(_T("GameStart"), _T("Width"),7, filename);
-	yGrid = GetPrivateProfileInt(_T("GameStart"), _T("Height"), 7, filename);
+	tstring filename = _T(".\\puzzleGame.ini");
+	xGrid = GetPrivateProfileInt(_T("GameStart"), _T("Width"),7, filename.c_str());
+	yGrid = GetPrivateProfileInt(_T("GameStart"), _T("Height"), 7, filename.c_str());
 
 	CGridDetails gridDetails(xGrid, yGrid);
 	gridDetailsCollection.push_back(gridDetails);
@@ -62,12 +62,7 @@ SetGridDetails function write in ini file entered rows and columns by user in di
 
 void CGameConfiguration::SetGridDetails(int rows, int columns)
 {
-	TCHAR theRows[10];
-	TCHAR theColumns[10];
-	_stprintf(theRows, _T("%d"), rows);
-	_stprintf(theColumns, _T("%d"), columns);
-
-	const TCHAR* filename = _T(".\\puzzleGame.ini");
-	WritePrivateProfileString(_T("GameStart"), _T("Width"), theRows, filename);
-	WritePrivateProfileString(_T("GameStart"), _T("Height"), theColumns, filename);
+	tstring filename = _T(".\\puzzleGame.ini");
+	WritePrivateProfileString(_T("GameStart"), _T("Width"), std::to_string(rows).c_str(), filename.c_str());
+	WritePrivateProfileString(_T("GameStart"), _T("Height"), std::to_string(columns).c_str(), filename.c_str());
 }

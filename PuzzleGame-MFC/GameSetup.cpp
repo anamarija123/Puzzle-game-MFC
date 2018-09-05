@@ -20,7 +20,7 @@ initializeParameters function initialize two dimensional vector with coords of p
 @width dimension of picture
 @ picturePath chosen picture for game
 */
-void CGameSetUp::initializeParameters(int height, int width, const TCHAR* picturePath )
+void CGameSetUp::initializeParameters(int height, int width )
 {
 	heightNumber = height;
 	widthNumber = width;
@@ -113,6 +113,7 @@ DrawPieces function draw puzzles on window from ShuffleCoords vector
 */
 void CGameSetUp::DrawPieces(HDC HwINdC)
 {
+
 	int quantity_x = m_pictureWidth / widthNumber;
 	int quantity_y = m_pictureHeight / heightNumber;
 
@@ -127,13 +128,17 @@ void CGameSetUp::DrawPieces(HDC HwINdC)
 		
 		pieces.x = ShuffleCoords[i][0];
 		pieces.y = ShuffleCoords[i][1];
-		BOOL qRetBlit = ::BitBlt(
+		BOOL qRetBlit = BitBlt(
 			HwINdC,
 			i%widthNumber* quantity_x,
 			k % heightNumber * quantity_y,
 			quantity_x, quantity_y,
 			hLocalDC, pieces.x - quantity_x, pieces.y - quantity_y, SRCCOPY);
 	}
+
+	//SelectObject(hLocalDC, hOldBmp);
+	//DeleteDC(hLocalDC);
+	//DeleteObject(hBitmap);
 }
 
 /*
@@ -142,11 +147,11 @@ LoadBitmapPicture load picture from file
 @param szFileName path to picture
 */
 
-bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, const TCHAR* szFileName)
+bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, tstring szFileName)
 {
 	BITMAP qBitmap;
-	int lReturn;
 
+	int lReturn;
 	CString msgBitmap;
 	CString msgObj;
 	CString msgDC;
@@ -155,52 +160,55 @@ bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, const TCHAR* szFileName)
 
 	msgBitmap = LoadStringFromResource(IDS_FAILED);
 	caption = LoadStringFromResource(IDS_ERROR);
-
-	hBitmap = (HBITMAP)LoadImage(NULL, szFileName, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-
+	// Load the bitmap image file
+	hBitmap = (HBITMAP)LoadImage(NULL, szFileName.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+	// Verify that the image was loaded
 	if (hBitmap == NULL)
 	{
-		::MessageBox(NULL, msgBitmap, caption, MB_OK);
+		MessageBox(NULL, msgBitmap, caption, MB_OK);
 	}
 
 	msgObj = LoadStringFromResource(IDS_GET_OBJ);
-
+	// Get the bitmap's parameters and verify the get
 	lReturn = GetObject(reinterpret_cast<HGDIOBJ>(hBitmap), sizeof(BITMAP), reinterpret_cast<LPVOID>(&qBitmap));
 	if (!lReturn)
 	{
-		::MessageBox(NULL, _T("GetObj failed"), caption, MB_OK);
+		MessageBox(NULL, msgObj, caption, MB_OK);
 		return false;
 	}
 
 	msgDC = LoadStringFromResource(IDS_DC);
-
-	hLocalDC = ::CreateCompatibleDC(HwINdC);
+	// Create a device context that is compatible with the window
+	hLocalDC = CreateCompatibleDC(HwINdC);
 	// Verify that the device context was created
 	if (hLocalDC == NULL) {
-		::MessageBox(NULL, __T("CreateCompatibleDC Failed"), caption, MB_OK);
+		MessageBox(NULL, msgDC, caption, MB_OK);
 		return false;
 	}
 
 	msgSelectObj = LoadStringFromResource(IDS_SELECT_OBJ);
-
-	hOldBmp = (HBITMAP)::SelectObject(hLocalDC, hBitmap);
+	// Select the loaded bitmap into the device context
+	hOldBmp = (HBITMAP)SelectObject(hLocalDC, hBitmap);
 	if (hOldBmp == NULL)
 	{
-		::MessageBox(NULL, _T("SelectObj failed"), caption, MB_OK);
+		MessageBox(NULL, msgSelectObj, caption, MB_OK);
 		return false;
 	}
 	
 	m_pictureHeight = qBitmap.bmHeight;
 	m_pictureWidth = qBitmap.bmWidth;
-	
-	return true;
+
+	return true;	
 }
 
 
 void CGameSetUp::Delete()
 {
-	::DeleteDC(hLocalDC);
-	::DeleteObject(hBitmap);
+	BITMAP bm = { 0 };
+	int numbytes;
+	DeleteDC(hLocalDC);
+	DeleteObject(hBitmap);
+	numbytes = GetObject(hBitmap, sizeof(BITMAP), &bm);
 }
 
 /*

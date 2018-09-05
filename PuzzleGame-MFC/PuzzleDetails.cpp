@@ -6,21 +6,22 @@ CPuzzleDetails setting paths from previewImage in dialog and gameImage for game
 @param previewImage path of little picture
 @param gameImage path of big picture
 */
-CPuzzleDetails::CPuzzleDetails(TCHAR* previewImage, TCHAR* gameImage)
+CPuzzleDetails::CPuzzleDetails(tstring previewImage, tstring gameImage)
 {
-	if (previewImage == NULL)
+	if (previewImage.empty())
 	{
 		throw "Preview image not specified.";
 	}
-	_stprintf(m_wchPreviewImage, _T ("%s"),previewImage);
+	
+	m_wchPreviewImage.append(previewImage);
 	
 
-	if (gameImage == NULL)
+	if (gameImage.empty())
 	{
 		throw "Game image not specified.";
 	}
 	
-	_stprintf(m_wchGameImage, _T("%s"), gameImage);
+	m_wchGameImage.append(gameImage);
 }
 
 

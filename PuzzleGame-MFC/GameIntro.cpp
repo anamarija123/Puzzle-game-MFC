@@ -23,9 +23,9 @@ SetParametarsLoadedFromIniFile function call functions for loading from ini
 void CGameIntro::SetParametarsLoadedFromIniFile()
 {
 	m_gameConfiguration.checkCollection();
-	m_gameConfiguration.GetPuzzleDetails(1);
-	m_gameConfiguration.GetPuzzleDetails(2);
-	m_gameConfiguration.GetPuzzleDetails(3);
+	m_gameConfiguration.GetPuzzleDetails('1');
+	m_gameConfiguration.GetPuzzleDetails('2');
+	m_gameConfiguration.GetPuzzleDetails('3');
 }
 
 /*
@@ -57,7 +57,7 @@ void CGameIntro::SetParametersForGame(HDC hDC)
 	bool pictureOpened = m_setupGame.LoadBitmapPicture(hDC,m_wchImagePath);
 	if (pictureOpened == true)
 	{
-		m_setupGame.initializeParameters(x, y, m_wchImagePath);
+		m_setupGame.initializeParameters(x, y);
 	}
 	
 	ShufflePieces();

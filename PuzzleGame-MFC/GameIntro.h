@@ -4,13 +4,14 @@
 #include "SetGameDialog.h"
 #include "GameConfiguration.h"
 #include "GameSetUp.h"
+typedef std::basic_string<TCHAR>   tstring;
 
 class CGameIntro
 {
 private:
 	int x;
 	int y;
-	const TCHAR* m_wchImagePath;
+	tstring m_wchImagePath;
 public:
 	CGameIntro();
 	~CGameIntro();
@@ -21,7 +22,7 @@ public:
 	void ShufflePieces();
 	void start();
 
-	const TCHAR* GameImagePath(void) { return m_wchImagePath; }
+	tstring GameImagePath(void) { return m_wchImagePath; }
 
 	CGameConfiguration m_gameConfiguration;
 	CSetGameDialog m_dialogParameters;
