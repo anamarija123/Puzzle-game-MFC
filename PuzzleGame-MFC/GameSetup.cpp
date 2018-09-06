@@ -137,8 +137,8 @@ void CGameSetUp::DrawPieces(HDC HwINdC)
 	}
 
 	//SelectObject(hLocalDC, hOldBmp);
-	//DeleteDC(hLocalDC);
 	//DeleteObject(hBitmap);
+	//DeleteObject(hLocalDC);
 }
 
 /*
@@ -157,6 +157,7 @@ bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, tstring szFileName)
 	CString msgDC;
 	CString msgSelectObj;
 	CString caption;
+	HBITMAP hbmScreen = NULL;
 
 	msgBitmap = LoadStringFromResource(IDS_FAILED);
 	caption = LoadStringFromResource(IDS_ERROR);
@@ -185,7 +186,7 @@ bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, tstring szFileName)
 		MessageBox(NULL, msgDC, caption, MB_OK);
 		return false;
 	}
-
+	
 	msgSelectObj = LoadStringFromResource(IDS_SELECT_OBJ);
 	// Select the loaded bitmap into the device context
 	hOldBmp = (HBITMAP)SelectObject(hLocalDC, hBitmap);
@@ -194,7 +195,7 @@ bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, tstring szFileName)
 		MessageBox(NULL, msgSelectObj, caption, MB_OK);
 		return false;
 	}
-	
+
 	m_pictureHeight = qBitmap.bmHeight;
 	m_pictureWidth = qBitmap.bmWidth;
 
