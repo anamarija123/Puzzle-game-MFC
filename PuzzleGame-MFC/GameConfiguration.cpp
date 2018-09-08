@@ -2,6 +2,14 @@
 #include "GameConfiguration.h"
 #include "PuzzleDetails.h"
 
+CGameConfiguration::CGameConfiguration() : xGrid(0), yGrid(0)
+{
+}
+
+CGameConfiguration::~CGameConfiguration()
+{
+}
+
 /*
 GetPuzzleDetails function load picture paths from ini file
 @param puzzleId is number of section in ini file

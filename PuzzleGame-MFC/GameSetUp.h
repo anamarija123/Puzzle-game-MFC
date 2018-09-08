@@ -16,11 +16,11 @@ public:
 	const int GetPictureWidth(void) { return m_pictureWidth; }
 	const int GetPictureHeight(void) { return m_pictureHeight; }
 
-	const int GetNumberOfColumns(void) { return heightNumber; }
-	const int GetNumberOfRows(void) { return widthNumber; }
+	const int GetNumberOfColumns(void) { return m_heightNumber; }
+	const int GetNumberOfRows(void) { return m_widthNumber; }
 
-	const int GetWidthOfPiece(void) { return quantityOfWidth; }
-	const int GetHeightOfPiece(void) { return quantityOfHeight; }
+	const int GetWidthOfPiece(void) { return m_quantityOfWidth; }
+	const int GetHeightOfPiece(void) { return m_quantityOfHeight; }
 
 private:
 	void Deallocate();
@@ -31,21 +31,17 @@ private:
 	HDC hLocalDC;
 	HBITMAP hOldBmp;
 
-	POINT original;
-	POINT second_point;	
+
 	POINT pieces;
 	std::vector<std::vector<int>> Coords;
 	std::vector<std::vector<int>> ShuffleCoords;
-	int heightNumber;
-	int widthNumber;
-
-	RECT rect;
-	
+	int m_heightNumber;
+	int m_widthNumber;
 
 	int m_pictureHeight;
 	int m_pictureWidth;
 
-	int quantityOfWidth;
-	int quantityOfHeight;
+	int m_quantityOfWidth;
+	int m_quantityOfHeight;
 };
 

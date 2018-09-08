@@ -6,9 +6,17 @@
 #include "resource.h"
 #include <ctime>     
 
-CGameSetUp::CGameSetUp() : hBitmap(nullptr), hLocalDC(nullptr)
+CGameSetUp::CGameSetUp() : 
+	hBitmap(nullptr), 
+	hLocalDC(nullptr),
+	hOldBmp (nullptr),
+	m_heightNumber(0),
+	m_widthNumber(0), 
+	m_pictureHeight(0),
+	m_pictureWidth(0),
+	m_quantityOfWidth(0),
+	m_quantityOfHeight(0)
 {
-	//hLocalDC = nullptr;
 }
 
 
@@ -24,8 +32,8 @@ initializeParameters function initialize two dimensional vector with coords of p
 */
 void CGameSetUp::initializeParameters(int height, int width )
 {
-	heightNumber = height;
-	widthNumber = width;
+	m_heightNumber = height;
+	m_widthNumber = width;
 
 	if (!Coords.empty())
 	{
@@ -39,14 +47,14 @@ void CGameSetUp::initializeParameters(int height, int width )
 	
 	Coords.resize(width*height, std::vector<int>(2));
 
-	quantityOfHeight = m_pictureHeight / height;
-	quantityOfWidth = m_pictureWidth / width;
+	m_quantityOfHeight = m_pictureHeight / height;
+	m_quantityOfWidth = m_pictureWidth / width;
 
 
 	int index = 0;
-		for (int i = quantityOfHeight; i <= m_pictureHeight; i += quantityOfHeight)
+		for (int i = m_quantityOfHeight; i <= m_pictureHeight; i += m_quantityOfHeight)
 		{
-			for (int j = quantityOfWidth; j <= m_pictureWidth; j += quantityOfWidth)
+			for (int j = m_quantityOfWidth; j <= m_pictureWidth; j += m_quantityOfWidth)
 			{
 				Coords[index][0] = j;
 				Coords[index][1] = i;
@@ -79,8 +87,8 @@ void CGameSetUp::Swap(std::vector<POINT>gamerClickCoords)
 	secondClickedPieceCoords.y = gamerClickCoords[1].y;
 
 	/*algorithm for find index in Coords vector*/
-	int index = firstClickedPieceCoords.y*widthNumber + firstClickedPieceCoords.x;
-	int index2 = secondClickedPieceCoords.y*widthNumber + secondClickedPieceCoords.x;
+	int index = firstClickedPieceCoords.y*m_widthNumber + firstClickedPieceCoords.x;
+	int index2 = secondClickedPieceCoords.y*m_widthNumber + secondClickedPieceCoords.x;
 
 	/*Swap*/
 	temp = ShuffleCoords[index][0];
@@ -116,24 +124,24 @@ DrawPieces function draw puzzles on window from ShuffleCoords vector
 void CGameSetUp::DrawPieces(HDC HwINdC)
 {
 
-	int quantity_x = m_pictureWidth / widthNumber;
-	int quantity_y = m_pictureHeight / heightNumber;
+	int quantity_x = m_pictureWidth / m_widthNumber;
+	int quantity_y = m_pictureHeight / m_heightNumber;
 
 	int k = 0;
-	for (int i = 0; i < widthNumber*heightNumber; i++)
+	for (int i = 0; i < m_widthNumber*m_heightNumber; i++)
 	{
 	
-		if (i % widthNumber == 0 && i != 0)
+		if (i % m_widthNumber == 0 && i != 0)
 		{
 			++k;
 		}
 		
 		pieces.x = ShuffleCoords[i][0];
 		pieces.y = ShuffleCoords[i][1];
-		BOOL qRetBlit = BitBlt(
+		bool qRetBlit = BitBlt(
 			HwINdC,
-			i%widthNumber* quantity_x,
-			k % heightNumber * quantity_y,
+			i%m_widthNumber* quantity_x,
+			k % m_heightNumber * quantity_y,
 			quantity_x, quantity_y,
 			hLocalDC, pieces.x - quantity_x, pieces.y - quantity_y, SRCCOPY);
 	}
@@ -149,7 +157,6 @@ LoadBitmapPicture load picture from file
 bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, tstring szFileName)
 {
 	BITMAP qBitmap;
-	CClientDC pdc();
 	int lReturn;
 	CString msgBitmap;
 	CString msgObj;

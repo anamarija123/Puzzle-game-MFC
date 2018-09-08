@@ -1,22 +1,22 @@
 #include "stdafx.h"
 #include "GameIntro.h"
 
-/*
-start function call other functions to load from ini file or dialog.
-*/
-void CGameIntro::start()
-{	
-	SetParametarsLoadedFromIniFile();
-	SetParametarsLoadedFromDialog();
-}
-
-CGameIntro::CGameIntro()
+CGameIntro::CGameIntro() : x(0), y(0)
 {
 }
 
 
 CGameIntro::~CGameIntro()
 {
+}
+
+/*
+start function call other functions to load from ini file or dialog.
+*/
+void CGameIntro::start()
+{
+	SetParametarsLoadedFromIniFile();
+	SetParametarsLoadedFromDialog();
 }
 /*
 SetParametarsLoadedFromIniFile function call functions for loading from ini
