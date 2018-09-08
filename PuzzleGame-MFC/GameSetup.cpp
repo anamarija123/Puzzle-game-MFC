@@ -6,13 +6,15 @@
 #include "resource.h"
 #include <ctime>     
 
-CGameSetUp::CGameSetUp()
+CGameSetUp::CGameSetUp() : hBitmap(nullptr), hLocalDC(nullptr)
 {
+	//hLocalDC = nullptr;
 }
 
 
 CGameSetUp::~CGameSetUp()
 {
+	Deallocate();
 }
 /*
 initializeParameters function initialize two dimensional vector with coords of picture, depend on height and width 
@@ -136,9 +138,6 @@ void CGameSetUp::DrawPieces(HDC HwINdC)
 			hLocalDC, pieces.x - quantity_x, pieces.y - quantity_y, SRCCOPY);
 	}
 
-	//SelectObject(hLocalDC, hOldBmp);
-	//DeleteObject(hBitmap);
-	//DeleteObject(hLocalDC);
 }
 
 /*
@@ -150,15 +149,15 @@ LoadBitmapPicture load picture from file
 bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, tstring szFileName)
 {
 	BITMAP qBitmap;
-
+	CClientDC pdc();
 	int lReturn;
 	CString msgBitmap;
 	CString msgObj;
 	CString msgDC;
 	CString msgSelectObj;
 	CString caption;
-	HBITMAP hbmScreen = NULL;
 
+	
 	msgBitmap = LoadStringFromResource(IDS_FAILED);
 	caption = LoadStringFromResource(IDS_ERROR);
 	// Load the bitmap image file
@@ -195,7 +194,7 @@ bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, tstring szFileName)
 		MessageBox(NULL, msgSelectObj, caption, MB_OK);
 		return false;
 	}
-
+	
 	m_pictureHeight = qBitmap.bmHeight;
 	m_pictureWidth = qBitmap.bmWidth;
 
@@ -203,13 +202,14 @@ bool CGameSetUp::LoadBitmapPicture(HDC HwINdC, tstring szFileName)
 }
 
 
-void CGameSetUp::Delete()
+void CGameSetUp::Deallocate()
 {
-	BITMAP bm = { 0 };
-	int numbytes;
+	if (hLocalDC != nullptr)
+	{
+		SelectObject(hLocalDC, hOldBmp);
+	}
 	DeleteDC(hLocalDC);
 	DeleteObject(hBitmap);
-	numbytes = GetObject(hBitmap, sizeof(BITMAP), &bm);
 	
 }
 

@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "GameConfiguration.h"
-#include <list>
 #include "PuzzleDetails.h"
 
 /*
@@ -62,7 +61,14 @@ SetGridDetails function write in ini file entered rows and columns by user in di
 
 void CGameConfiguration::SetGridDetails(int rows, int columns)
 {
+
 	tstring filename = _T(".\\puzzleGame.ini");
+#ifdef UNICODE
+	WritePrivateProfileString(_T("GameStart"), _T("Width"), std::to_wstring(rows).c_str(), filename.c_str());
+	WritePrivateProfileString(_T("GameStart"), _T("Height"), std::to_wstring(columns).c_str(), filename.c_str());
+#else
 	WritePrivateProfileString(_T("GameStart"), _T("Width"), std::to_string(rows).c_str(), filename.c_str());
 	WritePrivateProfileString(_T("GameStart"), _T("Height"), std::to_string(columns).c_str(), filename.c_str());
+#endif
+
 }

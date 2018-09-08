@@ -9,6 +9,7 @@ void CGameIntro::start()
 	SetParametarsLoadedFromIniFile();
 	SetParametarsLoadedFromDialog();
 }
+
 CGameIntro::CGameIntro()
 {
 }

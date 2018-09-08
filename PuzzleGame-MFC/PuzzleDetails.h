@@ -1,6 +1,5 @@
 #pragma once
-#include<string> 
-typedef std::basic_string<TCHAR>   tstring;
+
 
 class CPuzzleDetails
 {
@@ -10,7 +9,7 @@ private:
 	 tstring m_wchGameImage;
 
 public:
-	CPuzzleDetails (tstring previewImage, tstring gameImage);
+	CPuzzleDetails (const tstring& previewImage, const tstring& gameImage);
 	~CPuzzleDetails();
 
 	tstring GetPreviewImagePath(void) { return m_wchPreviewImage; }

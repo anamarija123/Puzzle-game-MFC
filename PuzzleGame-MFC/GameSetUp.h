@@ -1,6 +1,5 @@
 #pragma once
-#include <vector>
-typedef std::basic_string<TCHAR>   tstring;
+
 
 class CGameSetUp
 {
@@ -12,7 +11,7 @@ public:
 	void DrawPieces(HDC HwINdC);
 	void Swap(std::vector<POINT>gamerClickCoords);
 	bool LoadBitmapPicture(HDC HwINdC, tstring szFileName);
-	void Delete();
+	
 
 	const int GetPictureWidth(void) { return m_pictureWidth; }
 	const int GetPictureHeight(void) { return m_pictureHeight; }
@@ -24,6 +23,10 @@ public:
 	const int GetHeightOfPiece(void) { return quantityOfHeight; }
 
 private:
+	void Deallocate();
+	CString LoadStringFromResource(int ID);
+
+private:
 	HBITMAP hBitmap;
 	HDC hLocalDC;
 	HBITMAP hOldBmp;
@@ -31,8 +34,8 @@ private:
 	POINT original;
 	POINT second_point;	
 	POINT pieces;
-	std::vector < std::vector<int>> Coords;
-	std::vector < std::vector<int>> ShuffleCoords;
+	std::vector<std::vector<int>> Coords;
+	std::vector<std::vector<int>> ShuffleCoords;
 	int heightNumber;
 	int widthNumber;
 
@@ -44,7 +47,5 @@ private:
 
 	int quantityOfWidth;
 	int quantityOfHeight;
-
-	CString LoadStringFromResource(int ID);
 };
 

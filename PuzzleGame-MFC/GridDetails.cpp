@@ -6,19 +6,17 @@ CGridDetails setting grid info
 @param xSize number of rows
 @param ySize number of columns
 */
-CGridDetails::CGridDetails(const int xSize, const int ySize)
+CGridDetails::CGridDetails(const int xSize, const int ySize) : m_XSize(xSize), m_YSize(ySize)
 {
-	if (xSize == 0)
+	if (m_XSize == 0)
 	{
 		throw "width is not defined";
 	}
-	this->m_XSize = xSize;
 
-	if (ySize == 0)
+	if (m_YSize == 0)
 	{
 		throw "width is not defined";
 	}
-	this->m_YSize = ySize;
 }
 
 CGridDetails::~CGridDetails()

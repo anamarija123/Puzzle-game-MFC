@@ -4,7 +4,6 @@
 #include "SetGameDialog.h"
 #include "GameConfiguration.h"
 #include "GameSetUp.h"
-typedef std::basic_string<TCHAR>   tstring;
 
 class CGameIntro
 {

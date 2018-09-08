@@ -4,6 +4,7 @@ class CGridDetails
 private:
 	int m_XSize;
 	int m_YSize;
+
 public:
 	CGridDetails(const int xSize, const int ySize);
 	~CGridDetails();
